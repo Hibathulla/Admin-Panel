@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 *,
 *::after,
 *::before {
@@ -11,12 +10,34 @@
 }
 
 body {
-  @apply h-full box-border bg-[#F5F5F5];
+  @apply h-full box-border bg-zinc-100 dark:bg-[#121212];
+}
+
+@layer utilities {
+  h1 {
+    @apply text-black-secondary dark:text-slate-50 text-3xl tracking-wider font-semibold;
+  }
+}
+
+@layer components {
+  .white-icon {
+    @apply invert-[100] sepia-[0] saturate-[0] hue-rotate-[93deg] brightness-[1.03] contrast-[1.03];
+  }
+  .dark-icon {
+    @apply invert-[.09] sepia-[.3] saturate-[.03] hue-rotate-[318deg] brightness-[.91] contrast-[.82];
+  }
 }
 
 .parent:hover .icon-color {
   filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(106deg)
     brightness(107%) contrast(101%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark-color {
+    filter: brightness(0) saturate(100%) invert(11%) sepia(2%) saturate(259%)
+      hue-rotate(314deg) brightness(87%) contrast(84%);
+  }
 }
 
 .icon-color {
@@ -27,4 +48,9 @@ body {
 .white-color {
   filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(106deg)
     brightness(107%) contrast(101%);
+}
+
+.dark-color {
+  filter: brightness(0) saturate(100%) invert(11%) sepia(2%) saturate(259%)
+    hue-rotate(314deg) brightness(87%) contrast(84%);
 }

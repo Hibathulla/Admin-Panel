@@ -1,5 +1,10 @@
+"use client";
 import React from "react";
 import { DashboardIcon } from "@utils/DashboardIcon";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import Image from "next/image";
+import { useTheme } from "next-themes";
+import { cn } from "../../utils/utils";
 
 const DashboardCard = ({
   name,
@@ -8,20 +13,30 @@ const DashboardCard = ({
 }: {
   name: string;
   value: number;
-  icon: string;
+  icon: any;
 }) => {
   const dashboardIcon = DashboardIcon(icon);
+  const { theme } = useTheme();
+  console.log(theme, "theme");
+
   return (
-    <div className="bg-zinc-100 rounded-lg p-4 border flex flex-col border-gray-300 gap-4">
-      <div className="flex justify-between items-center">
-        <h3 className="text-xl font-semibold text-black-secondary">{name}</h3>
-        {dashboardIcon}
-      </div>
-      <div className="text-2xl font-bold">
-        {icon === "cash" && "₹"}
-        {value}
-      </div>
-    </div>
+    <Card>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium">{name}</CardTitle>
+        <Image
+          alt={name}
+          src={icon}
+          className={cn({
+            "white-color": theme === "dark",
+            "dark-color": theme === "light",
+          })}
+        />
+      </CardHeader>
+      <CardContent>
+        <div className="text-2xl font-bold">$45,231.89</div>
+        <p className="text-xs text-muted-foreground">+20.1% from last month</p>
+      </CardContent>
+    </Card>
   );
 };
 

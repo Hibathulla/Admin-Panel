@@ -1,11 +1,20 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Inter_Tight, Lexend } from "next/font/google";
+import Providers from "./providers";
+import { ThemeProvider } from "./theme-provider";
 
-const inter = Inter({
+const lexend = Lexend({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700"],
 });
+
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+console.log(lexend, "inter");
 
 export const metadata: Metadata = {
   title: "Admin",
@@ -19,7 +28,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <body className={lexend.className}>
+          <Providers>{children}</Providers>
+        </body>
+      </ThemeProvider>
     </html>
   );
 }

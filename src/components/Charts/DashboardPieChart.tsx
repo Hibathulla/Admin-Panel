@@ -20,8 +20,8 @@ const data = [
 export default function DashboardPieChart() {
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
   return (
-    <div className="w-full h-full border border-gray-300 rounded-lg flex flex-col py-3 px-4">
-      <h2 className="text-xl font-semibold text-black-secondary">
+    <div className="w-full h-full border border-gray-300 rounded-lg flex dark:bg-[#282828] dark:border-0 flex-col py-3 px-4">
+      <h2 className="text-xl font-semibold text-black-secondary dark:text-[#ffff]">
         Sale by Category
       </h2>
       <ResponsiveContainer width={"99%"} height={200}>
@@ -78,10 +78,12 @@ export default function DashboardPieChart() {
                 style={{ backgroundColor: item.color }}
               />
               <div className="flex flex-col gap-2">
-                <h4 className="text-black-secondary text-xs font-semibold">
+                <h4 className="text-black-secondary text-xs font-semibold dark:text-[#ffff]">
                   {item.name}
                 </h4>
-                <p className="text-black-secondary text-xs">{item.value}</p>
+                <p className="text-black-secondary text-xs dark:text-[#ffff]">
+                  {item.value}
+                </p>
               </div>
             </div>
           );
