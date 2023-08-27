@@ -5,7 +5,7 @@ import { Login1, Login2, Login3, Login4, Login5 } from "../../../assets/login";
 const LeftSide = () => {
   return (
     <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
-      <div className="absolute inset-0 bg-zinc-900 grid place-items-center">
+      <div className="absolute inset-0 dark:bg-blue-400 bg-zinc-900 grid place-items-center">
         <Image alt="login image" src={Login5} />
       </div>
       <div className="relative z-20 flex items-center text-lg font-medium">

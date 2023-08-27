@@ -4,13 +4,12 @@ import React, { Fragment, useEffect } from "react";
 
 const ProtectRoute = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
-  let value: string | null;
-  // Get the value from local storage if it exists
-  value = localStorage.getItem("token") || null;
 
   useEffect(() => {
-    if (!value) router.replace("/login");
-  }, [router, value]);
+    const tokenValue = localStorage.getItem("token");
+
+    if (!tokenValue) router.replace("/login");
+  }, [router]);
 
   return <Fragment>{children}</Fragment>;
 };

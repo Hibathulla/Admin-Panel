@@ -1,8 +1,9 @@
 import Sidebar from "@components/layouts/Sidebar";
 import Navbar from "@components/layouts/Navbar";
 import ProtectRoute from "./ProtectRoute";
+import { Separator } from "@components/ui/separator";
 
-export default function Adminayout({
+export default function Adminlayout({
   children,
 }: {
   children: React.ReactNode;
@@ -13,6 +14,7 @@ export default function Adminayout({
         <Sidebar />
         <div className="w-full">
           <Navbar />
+          <Separator />
           <main className="p-6">{children}</main>
         </div>
       </div>

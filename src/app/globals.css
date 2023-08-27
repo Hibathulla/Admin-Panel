@@ -15,7 +15,7 @@ body {
 
 @layer utilities {
   h1 {
-    @apply text-black-secondary dark:text-slate-50 text-3xl tracking-wider font-semibold;
+    @apply text-black-secondary dark:text-slate-50 text-3xl tracking-tight font-bold;
   }
 }
 

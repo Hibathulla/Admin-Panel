@@ -4,7 +4,7 @@ import { ThemeToggle } from "./theme-toggle";
 const Navbar = () => {
   return (
     <header className="px-10 w-full dark:bg-[#181818]">
-      <div className="border-b dark:border-b-zinc-400 border-b-black-primary/10 py-4 flex items-start justify-between">
+      <div className="py-4 flex items-start justify-between">
         <div>
           {/* <h1 className="text-black-secondary text-3xl tracking-wider font-semibold">
             Dashboard

@@ -3,8 +3,8 @@ import { routes } from "./routes";
 import { axiosInstance } from "../../axios-config";
 
 const getUser = async () => {
-  const data = await axiosInstance.get(routes?.loggedUser);
-  return { data };
+  const { data } = await axiosInstance.get(routes?.loggedUser);
+  return data?.data;
 };
 
 export const useGetLoggedUser = () => {

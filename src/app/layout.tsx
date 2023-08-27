@@ -1,6 +1,8 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Inter_Tight, Lexend } from "next/font/google";
+import { Inter_Tight, Lexend } from "next/font/google";
+import { Toaster } from "react-hot-toast";
+import Hydrate from "../lib/hydrate-client";
+import "./globals.css";
 import Providers from "./providers";
 import { ThemeProvider } from "./theme-provider";
 
@@ -30,7 +32,10 @@ export default function RootLayout({
     <html lang="en">
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <body className={lexend.className}>
-          <Providers>{children}</Providers>
+          <Toaster position="top-right" />
+          <Providers>
+            <Hydrate>{children}</Hydrate>
+          </Providers>
         </body>
       </ThemeProvider>
     </html>

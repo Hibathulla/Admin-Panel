@@ -1,8 +1,7 @@
-import React from "react";
-import { Button } from "@components/ui/button";
-import { Table } from "@components/ui/table";
+import CreateButton from "@components/common/CreateButton";
+import Heading from "@components/common/Heading";
+import { ProductColumns } from "@components/products/product-list/column";
 import { DataTable } from "@components/ui/data-table";
-import { columns } from "@components/products/column";
 import { PackagePlus } from "lucide-react";
 
 const data = [
@@ -36,25 +35,18 @@ const ProductsPage = () => {
   return (
     <section>
       <div className="flex w-full items-center justify-between">
-        <div className="space-y-2">
-          <h1>Products</h1>
-          <div className="font-semibold text-xs text-neutral-800 dark:text-neutral-100">
-            <span className="text-neutral-400 dark:text-neutral-50">
-              ACTIVE
-            </span>
-            : 5 PRODUCTS
-          </div>
-        </div>
-        <Button className="" variant={"default"}>
-          <PackagePlus className="w-5 h-5 mr-2" />
-          New Product
-        </Button>
+        <Heading title="Products" description="Manage store products" />
+        <CreateButton
+          link={"/products/create"}
+          title="Product"
+          icon={<PackagePlus className="w-5 h-5 mr-2" />}
+        />
       </div>
       <div>
         <DataTable
           searhPlaceholder="Search Products..."
           searchKey="name"
-          columns={columns}
+          columns={ProductColumns}
           data={data}
         />
       </div>
