@@ -1,8 +1,8 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { CellAction } from "../../common/cell-action";
 import moment from "moment";
+import { CategoryCellAction } from "./cell-action";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -40,7 +40,7 @@ export const CategoryColumns: ColumnDef<CategoriesColumn>[] = [
     id: "actions",
     header: "Action",
     cell: ({ row }) => {
-      return <CellAction data={row.original} />;
+      return <CategoryCellAction data={row.original} />;
     },
   },
 ];

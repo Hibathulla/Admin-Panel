@@ -10,24 +10,36 @@ import {
   DropdownMenuTrigger,
 } from "@components/ui/dropdown-menu";
 import { Fragment, useState } from "react";
-import AlertModal from "./AlertModal";
 import { useRouter } from "next/navigation";
+import AlertModal from "@components/common/AlertModal";
+import { useDeleteCategory } from "../../../services/category";
+import toast from "react-hot-toast";
 
-export const CellAction: React.FC<{
+export const CategoryCellAction: React.FC<{
   data: any;
-  type: string;
-  onConfirm?: () => void;
-}> = ({ data, type, onConfirm }) => {
+}> = ({ data }) => {
   const [open, setOpen] = useState(false);
 
   const router = useRouter();
+
+  const { mutate, isLoading } = useDeleteCategory();
+
+  const onDelete = () => {
+    mutate(data?.id, {
+      onSuccess: (res) => {
+        setOpen(false);
+        toast.error("category deleted successfully");
+      },
+    });
+  };
 
   return (
     <Fragment>
       <AlertModal
         isOpen={open}
         onClose={() => setOpen(false)}
-        onConfirm={onConfirm}
+        onConfirm={onDelete}
+        loading={isLoading}
       />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -49,7 +61,7 @@ export const CellAction: React.FC<{
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
-            onClick={() => router.push(`/${type}/${data?.id}`)}
+            onClick={() => router.push(`/category/${data?.id}`)}
             className="cursor-pointer"
           >
             <Edit className="h-4 w-4 mr-2" />

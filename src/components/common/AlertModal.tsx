@@ -17,6 +17,7 @@ interface AlertModalProps {
   onClose?: () => void;
   onConfirm?: () => void;
   loading?: boolean;
+  text?: string;
 }
 
 const AlertModal: React.FC<AlertModalProps> = ({
@@ -24,6 +25,7 @@ const AlertModal: React.FC<AlertModalProps> = ({
   loading,
   onClose,
   onConfirm,
+  text,
 }) => {
   return (
     <AlertDialog open={isOpen}>
@@ -31,13 +33,14 @@ const AlertModal: React.FC<AlertModalProps> = ({
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete data.
+            This action cannot be undone. This will permanently delete this{" "}
+            {text ? text : "data"}.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel onClick={onClose}>Cancel</AlertDialogCancel>
 
-          <Button variant="destructive" onClick={onConfirm}>
+          <Button disabled={loading} variant="destructive" onClick={onConfirm}>
             {loading ? (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             ) : (
