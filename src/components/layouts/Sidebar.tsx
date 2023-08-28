@@ -15,7 +15,7 @@ const Sidebar = () => {
   console.log(hover, "path");
 
   return (
-    <aside className="border-r bg-zinc-100 dark:bg-[#181818] h-screen">
+    <aside className="border-r bg-zinc-100 dark:bg-[#181818] h-screen fixed top-0">
       <div className="w-52 px-5">
         <div className="flex items-center justify-center py-6 gap-2">
           <Image src={LogoIcon} alt="logo" width={23} height={23} />

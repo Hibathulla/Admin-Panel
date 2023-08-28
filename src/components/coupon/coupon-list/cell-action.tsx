@@ -13,22 +13,25 @@ import { Clipboard, MoreHorizontal, PencilRuler, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Fragment, useState } from "react";
 import toast from "react-hot-toast";
-import { useDeleteSize } from "../../../services/size";
+import { useDeleteSize } from "@services/size";
+import { useDeleteCoupon } from "../../../services/coupon";
 
-export const SizeCellAction: React.FC<{
+export const CouponCellAction: React.FC<{
   data: any;
 }> = ({ data }) => {
+  console.log(data, "data");
+
   const [open, setOpen] = useState(false);
 
   const router = useRouter();
 
-  const { mutate, isLoading } = useDeleteSize();
+  const { mutate, isLoading } = useDeleteCoupon();
 
   const onDelete = () => {
-    mutate(data?.id, {
+    mutate(data?._id, {
       onSuccess: (res) => {
         setOpen(false);
-        toast.error("Size deleted successfully");
+        toast.error("Coupon deleted successfully");
       },
     });
   };
@@ -61,7 +64,7 @@ export const SizeCellAction: React.FC<{
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
-            onClick={() => router.push(`/size/${data?.id}`)}
+            onClick={() => router.push(`/coupons/${data?._id}`)}
             className="cursor-pointer"
           >
             <PencilRuler className="h-4 w-4 mr-2" />

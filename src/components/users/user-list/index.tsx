@@ -3,6 +3,7 @@ import { DataTable } from "@components/ui/data-table";
 import { useGetUser } from "@services/user";
 import TableSkeleton from "../../../skeletons/tableSkeleton";
 import { UserColumns } from "./UserColumn";
+import UserTableSkeleton from "../../../skeletons/userTableSkeleton";
 
 const UserList = () => {
   const { data: userData, isLoading } = useGetUser();
@@ -12,7 +13,7 @@ const UserList = () => {
     return (
       <div className="mt-4">
         {" "}
-        <TableSkeleton />
+        <UserTableSkeleton />
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from "react";
 import { ThemeToggle } from "./theme-toggle";
+import { UserNav } from "./user-nav";
 
 const Navbar = () => {
   return (
@@ -16,7 +17,7 @@ const Navbar = () => {
         {/* <div></div> */}
         <div className="flex items-center gap-6">
           <ThemeToggle />
-          <div className="w-10 h-10 rounded-full bg-gray-500"></div>
+          <UserNav />
         </div>
       </div>
     </header>

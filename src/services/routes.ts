@@ -6,4 +6,5 @@ export const routes = {
   singleUpload: "/api/image/upload",
   deleteUpload: "/api/image/delete",
   size: "/api/size",
+  coupon: "/api/coupon",
 };

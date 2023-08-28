@@ -4,4 +4,5 @@ export interface userType {
   name?: string;
   email?: string;
   role: string;
+  photo?: string;
 }

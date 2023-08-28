@@ -1,13 +1,9 @@
 "use client";
-import React from "react";
 import Heading from "@components/common/Heading";
-import { CategoryForm } from "@components/categories/category-form";
-import { Button } from "@components/ui/button";
-import { ChevronLeft } from "lucide-react";
-import Back from "@components/common/Back";
-import { useDeleteCategory, useGetSingleCategory } from "@services/category";
-import toast from "react-hot-toast";
+import { useDeleteCoupon, useGetSingleCoupon } from "@services/coupon";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { CouponForm } from "@components/coupon/coupon-form";
 
 async function getCategory(param: string) {
   let token;
@@ -26,18 +22,18 @@ async function getCategory(param: string) {
   return res.json();
 }
 
-const CategoryUpdatePage = ({ params }: { params: { categoryId: string } }) => {
-  const { data: categoryData } = useGetSingleCategory(params?.categoryId);
+const CouponUpdatePage = ({ params }: { params: { couponId: string } }) => {
+  const { data: categoryData } = useGetSingleCoupon(params?.couponId);
   console.log(categoryData, "res");
 
-  const { mutate, isLoading } = useDeleteCategory();
+  const { mutate, isLoading } = useDeleteCoupon();
   const router = useRouter();
 
   const onDeletehandler = () => {
-    mutate(categoryData?.data?.category!?.id, {
+    mutate(categoryData?.data?.coupon!?.id, {
       onSuccess: () => {
-        toast.error("Size deleted successfully");
-        router.replace("/category");
+        toast.error("Coupon deleted successfully");
+        router.replace("/coupons");
       },
     });
   };
@@ -47,18 +43,18 @@ const CategoryUpdatePage = ({ params }: { params: { categoryId: string } }) => {
       <section className="space-y-6">
         {/* <Back /> */}
         <Heading
-          title="Update Category"
-          description="Update a category"
+          title="Update Coupon"
+          description="Update a coupon"
           deleteButton={true}
           onConfirm={onDeletehandler}
           loading={isLoading}
         />
-        <CategoryForm
+        <CouponForm
           className="max-w-[15rem]"
-          initialData={categoryData?.data?.category!}
+          initialData={categoryData?.data?.coupon!}
         />
       </section>
     );
 };
 
-export default CategoryUpdatePage;
+export default CouponUpdatePage;

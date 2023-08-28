@@ -1,10 +1,8 @@
 "use client";
 import { DataTable } from "@components/ui/data-table";
-import { useGetCategory } from "@services/category";
-import { useGetLoggedUser } from "../../../services/user";
-import TableSkeleton from "../../../skeletons/tableSkeleton";
-import { SizeColumn, SizeColumns } from "./SizeColumn";
-import { useGetSize } from "../../../services/size";
+import { useGetSize } from "@services/size";
+import SizeTableSkeleton from "../../../skeletons/sizeTableSkeleton";
+import { SizeColumns } from "./SizeColumn";
 
 const SizeList = () => {
   const { data: sizeData, isLoading } = useGetSize();
@@ -14,7 +12,7 @@ const SizeList = () => {
     return (
       <div className="mt-4">
         {" "}
-        <TableSkeleton />
+        <SizeTableSkeleton />
       </div>
     );
   }

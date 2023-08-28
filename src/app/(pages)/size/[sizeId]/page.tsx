@@ -1,5 +1,5 @@
 "use client";
-import { CategoryForm } from "@components/categories/categories-form";
+import { CategoryForm } from "@components/categories/category-form";
 import Heading from "@components/common/Heading";
 import { useDeleteSize, useGetSingleSize } from "@services/size";
 import { SizeForm } from "@components/sizes/size-form";

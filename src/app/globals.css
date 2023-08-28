@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   @apply h-full box-border bg-zinc-100 dark:bg-[#121212];
 }

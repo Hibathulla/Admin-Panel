@@ -10,12 +10,12 @@ export default function Adminlayout({
 }) {
   return (
     <ProtectRoute>
-      <div className="flex">
+      <div className="relative flex h-full">
         <Sidebar />
-        <div className="w-full">
+        <div className="w-full h-full">
           <Navbar />
           <Separator />
-          <main className="p-6">{children}</main>
+          <main className="p-6 ml-52">{children}</main>
         </div>
       </div>
     </ProtectRoute>

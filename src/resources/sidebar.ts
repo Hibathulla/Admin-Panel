@@ -1,5 +1,6 @@
 import {
   CategoryIcon,
+  CouponIcon,
   DashboardIcon,
   OrdersIcon,
   ProductsIcon,
@@ -46,13 +47,20 @@ export const sidebarLinks = [
   },
   {
     id: 6,
+    label: "Coupons",
+    icon: CouponIcon,
+    slug: "coupons",
+    url: "/coupons",
+  },
+  {
+    id: 7,
     label: "Orders",
     icon: OrdersIcon,
     slug: "orders",
     url: "/orders",
   },
   {
-    id: 7,
+    id: 8,
     label: "Settings",
     icon: SettingsIcon,
     slug: "settings",

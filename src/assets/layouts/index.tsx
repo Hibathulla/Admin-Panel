@@ -6,6 +6,7 @@ import SizesIcon from "@assets/layouts/size.svg";
 import UserIcon from "@assets/layouts/user.svg";
 import SettingsIcon from "@assets/layouts/settings.svg";
 import LogoutIcon from "@assets/layouts/logout.svg";
+import CouponIcon from "@assets/layouts/coupon.svg";
 
 export {
   CategoryIcon,
@@ -15,4 +16,5 @@ export {
   SizesIcon,
   UserIcon,
   SettingsIcon,
+  CouponIcon,
 };

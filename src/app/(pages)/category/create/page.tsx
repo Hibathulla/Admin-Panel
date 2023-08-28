@@ -1,6 +1,6 @@
 import React from "react";
 import Heading from "@components/common/Heading";
-import { CategoryForm } from "@components/categories/categories-form";
+import { CategoryForm } from "@components/categories/category-form";
 import { Button } from "@components/ui/button";
 import { ChevronLeft } from "lucide-react";
 import Back from "@components/common/Back";

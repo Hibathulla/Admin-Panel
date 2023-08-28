@@ -65,13 +65,13 @@ export const UserCellAction: React.FC<{
             <PencilRuler className="h-4 w-4 mr-2" />
             Update
           </DropdownMenuItem>
-          <DropdownMenuItem
+          {/* <DropdownMenuItem
             className="cursor-pointer"
             onClick={() => setOpen(true)}
           >
             <Trash2 className="h-4 w-4 mr-2 fill-red-400" />
             Delete
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
         </DropdownMenuContent>
       </DropdownMenu>
     </Fragment>
