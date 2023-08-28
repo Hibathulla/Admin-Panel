@@ -9,12 +9,16 @@ interface HeadingProps {
   title: string;
   description: string;
   deleteButton?: boolean;
+  onConfirm?: () => void;
+  loading?: boolean;
 }
 
 const Heading: React.FC<HeadingProps> = ({
   description,
   title,
   deleteButton = false,
+  onConfirm,
+  loading,
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -25,6 +29,8 @@ const Heading: React.FC<HeadingProps> = ({
         isOpen={open}
         onClose={() => setOpen(false)}
         text="category"
+        onConfirm={onConfirm}
+        loading={loading}
       />
       <div className="flex gap-1">
         <Button

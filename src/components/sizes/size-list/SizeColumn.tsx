@@ -2,11 +2,11 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import moment from "moment";
-import { CategoryCellAction } from "./cell-action";
+import { SizeCellAction } from "./cell-action";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type CategoriesColumn = {
+export type SizeColumn = {
   category: string;
   billboard?: string;
   billboardLabel?: string;
@@ -15,14 +15,14 @@ export type CategoriesColumn = {
   //   email: string;
 };
 
-export const CategoryColumns: ColumnDef<CategoriesColumn>[] = [
+export const SizeColumns: ColumnDef<SizeColumn>[] = [
   {
-    accessorKey: "category",
+    accessorKey: "name",
     header: "Name",
   },
   {
-    accessorKey: "billboard",
-    header: "Billboard",
+    accessorKey: "value",
+    header: "Value",
   },
   {
     accessorKey: "createdAt",
@@ -40,7 +40,7 @@ export const CategoryColumns: ColumnDef<CategoriesColumn>[] = [
     id: "actions",
     header: "Action",
     cell: ({ row }) => {
-      return <CategoryCellAction data={row.original} />;
+      return <SizeCellAction data={row.original} />;
     },
   },
 ];
