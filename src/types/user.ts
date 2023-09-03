@@ -3,6 +3,6 @@ export interface userType {
   _id?: string;
   name?: string;
   email?: string;
-  role: string;
+  role?: string;
   photo?: string;
 }

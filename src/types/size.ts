@@ -1,6 +1,6 @@
 export interface SizeType {
   id?: string;
-  name: string;
+  name?: string;
   value?: string;
   createdAt?: Date;
 }

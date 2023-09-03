@@ -13,12 +13,20 @@ const postImageUpload = (val: FormData) => {
   return axiosInstance.post(routes.singleUpload, val);
 };
 
+const postMultiImageUpload = (val: FormData) => {
+  return axiosInstance.post(routes.multiUpload, val);
+};
+
 const postDelete = (val: deleteProps) => {
   return axiosInstance.post(routes.deleteUpload, val);
 };
 
 export const useUploadImage = () => {
   return useMutation(postImageUpload);
+};
+
+export const useMultiUploadImage = () => {
+  return useMutation(postMultiImageUpload);
 };
 
 export const useDeleteImage = () => {

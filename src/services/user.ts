@@ -8,6 +8,11 @@ const getLoggedUser = async () => {
   return data?.data;
 };
 
+const updateLoggedUser = async (val: userType) => {
+  const { data } = await axiosInstance.patch(routes?.updateLoggedUser, val);
+  return data;
+};
+
 const getUser = async () => {
   const { data } = await axiosInstance.get(routes?.users);
   return data?.data;
@@ -49,6 +54,11 @@ export const useGetSingleUser = (id: string) => {
 export const useUpdateUser = () => {
   const queryClient = useQueryClient();
   return useMutation(updateUser);
+};
+
+export const useUpdateLoggedUser = () => {
+  const queryClient = useQueryClient();
+  return useMutation(updateLoggedUser);
 };
 
 export const useDeleteUser = () => {

@@ -55,6 +55,9 @@ export function CategoryForm({
   initialData,
   ...props
 }: CategoryFormProps) {
+  //states
+  const router = useRouter();
+  const queryClient = useQueryClient();
   //api
   const {
     mutate: create,
@@ -68,15 +71,15 @@ export function CategoryForm({
     isError: updateIsError,
     error: updateError,
   } = useUpdateCategory();
+
+  //images
   const { mutate: uploadImage, isLoading: uploadLoader } = useUploadImage();
   const { mutate: deleteImage, isLoading: deleteLoader } = useDeleteImage();
   const [image, setImage] = React.useState("");
 
   console.log(initialData, "data");
 
-  const router = useRouter();
-  const queryClient = useQueryClient();
-
+  //datas
   const err: any = ((createError || updateError) as any)?.response?.data!;
   const isLoading = createLoading || updateLoading;
   const isError = createIsError || updateIsError;

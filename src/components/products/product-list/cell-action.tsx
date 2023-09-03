@@ -1,6 +1,6 @@
 "use client";
+import AlertModal from "@components/common/AlertModal";
 import { Button } from "@components/ui/button";
-import { MoreHorizontal, Edit, Trash2, Clipboard } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,26 +9,26 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@components/ui/dropdown-menu";
-import { Fragment, useState } from "react";
+import { Clipboard, Edit, MoreHorizontal, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import AlertModal from "@components/common/AlertModal";
-import { useDeleteCategory } from "../../../services/category";
+import { Fragment, useState } from "react";
 import toast from "react-hot-toast";
+import { useDeleteProduct } from "../../../services/product";
 
-export const CategoryCellAction: React.FC<{
+export const ProductCellAction: React.FC<{
   data: any;
 }> = ({ data }) => {
   const [open, setOpen] = useState(false);
 
   const router = useRouter();
 
-  const { mutate, isLoading } = useDeleteCategory();
+  const { mutate, isLoading } = useDeleteProduct();
 
   const onDelete = () => {
     mutate(data?.id, {
       onSuccess: (res) => {
         setOpen(false);
-        toast.error("Category deleted successfully");
+        toast.error("Product deleted successfully");
       },
     });
   };
@@ -61,7 +61,7 @@ export const CategoryCellAction: React.FC<{
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
-            onClick={() => router.push(`/category/${data?.id}`)}
+            onClick={() => router.push(`/products/${data?.id}`)}
             className="cursor-pointer"
           >
             <Edit className="h-4 w-4 mr-2" />

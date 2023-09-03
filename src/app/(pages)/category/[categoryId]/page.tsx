@@ -36,7 +36,7 @@ const CategoryUpdatePage = ({ params }: { params: { categoryId: string } }) => {
   const onDeletehandler = () => {
     mutate(categoryData?.data?.category!?.id, {
       onSuccess: () => {
-        toast.error("Size deleted successfully");
+        toast.error("Product deleted successfully");
         router.replace("/category");
       },
     });
