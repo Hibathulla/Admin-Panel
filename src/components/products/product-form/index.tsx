@@ -57,7 +57,10 @@ const formSchema = z.object({
   discountPrice: z.coerce.number().optional(),
   description: z.string().optional(),
   category: z.string().min(1, "Please select a category"),
-  size: z.object({ id: z.string() }).array(),
+  size: z
+    .object({ id: z.string().min(1) })
+    .array()
+    .min(1, { message: "Please select atleast 1 size" }),
   isFeatured: z.boolean().optional(),
   outOfStock: z.boolean().optional(),
   images: z.string().array().optional(),
@@ -146,6 +149,9 @@ export function ProductsForm({
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    Object.keys(values).forEach(
+      (key) => (values as any)[key] === "" && delete (values as any)[key]
+    );
     const sizeIds = values?.size?.map((size) => {
       return size?.id;
     });
@@ -156,13 +162,14 @@ export function ProductsForm({
       update(
         {
           ...values,
+          id: initialData?.id,
           size: sizeIds,
           price: values?.price,
         },
         {
           onSuccess: (res) => {
             toast.success(res?.data?.message);
-            router.replace("/products");
+            // router.replace("/products");
           },
         }
       );
@@ -187,16 +194,20 @@ export function ProductsForm({
     console.log(values);
   }
 
-  // React.useEffect(() => {
-  //   if (initialData?.billboard) {
-  //     setImage(
-  //       `${process.env.NEXT_PUBLIC_API_BASE_URL}/img/product/${initialData?.billboard}`
-  //     );
-  //     form.setValue("billboard", initialData?.billboard!);
-  //   } else {
-  //     setImage("");
-  //   }
-  // }, [form, initialData?.billboard]);
+  React.useEffect(() => {
+    if (initialData?.images?.length != 0) {
+      let array: string[] = [];
+      initialData?.images?.map((image) => {
+        array.push(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/img/products/${image}`
+        );
+      });
+      setImages(array);
+      form.setValue("images", initialData?.images!);
+    } else {
+      setImages([]);
+    }
+  }, [form, initialData?.images]);
 
   const onChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

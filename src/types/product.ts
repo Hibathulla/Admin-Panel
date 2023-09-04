@@ -2,6 +2,7 @@ import { categoryType } from "./category";
 import { SizeType } from "./size";
 
 export interface productType {
+  id?: string;
   name: string;
   price: number;
   createdAt: Date;

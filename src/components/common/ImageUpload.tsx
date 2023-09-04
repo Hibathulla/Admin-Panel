@@ -54,6 +54,7 @@ const ImageUpload: React.FC<{
         <div>
           <Input
             {...field}
+            value=""
             placeholder="Category name"
             id="file-upload"
             type="file"

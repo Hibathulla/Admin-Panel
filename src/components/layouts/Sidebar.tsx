@@ -7,19 +7,32 @@ import { usePathname } from "next/navigation";
 import { LogoIcon } from "@assets/logo";
 import { cn } from "../../utils/utils";
 import { useTheme } from "next-themes";
+import { useGetSingleSettings } from "../../services/settings";
 
 const Sidebar = () => {
   const [hover, setHover] = useState<any>(null);
   const pathname = usePathname();
   const { theme } = useTheme();
+  const { data } = useGetSingleSettings("64f591c66c13180f873b9074");
   console.log(hover, "path");
 
   return (
     <aside className="border-r bg-zinc-100 dark:bg-[#181818] h-screen fixed top-0">
       <div className="w-52 px-5">
         <div className="flex items-center justify-center py-6 gap-2">
-          <Image src={LogoIcon} alt="logo" width={23} height={23} />
-          <h1 className="font-bold tracking-wider text-2xl">Buyzillo</h1>
+          <Image
+            className={cn("group-hover:fill-white", {
+              "white-color": theme === "dark",
+              "dark-color": theme === "light",
+            })}
+            src={LogoIcon}
+            alt="logo"
+            width={23}
+            height={23}
+          />
+          <h1 className="font-bold tracking-wider text-2xl">
+            {data?.data?.settings?.storeName}
+          </h1>
         </div>
         <nav className="mt-6">
           <ul className="flex flex-col justify-center gap-3">
@@ -32,7 +45,7 @@ const Sidebar = () => {
                     className={cn(
                       "group hover:bg-black-secondary dark:hover:bg-[#ffff] hover:text-white dark:hover:text-[#181818] dark:text-[#b3b3b3] rounded-xl py-2.5 px-4 flex items-center text-gray-500 gap-2 text-sm font-semibold",
                       {
-                        "bg-[#252525] dark:bg-[#ffff] text-white dark:text-[#181818]":
+                        "bg-[#252525] dark:bg-[#ffff] font-semibold dark:font-semibold text-white dark:text-[#181818]":
                           pathname === `/${link.slug}`,
                         // "#ffff": pathname === `/${link.slug}
                       }

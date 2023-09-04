@@ -60,7 +60,7 @@ const MultiImagesUpload: React.FC<{
         <div>
           <Input
             {...field}
-            value={images}
+            value={""}
             placeholder="Product name"
             multiple
             id="file-upload"
@@ -74,7 +74,7 @@ const MultiImagesUpload: React.FC<{
             className="cursor-pointer border rounded-xl p-2 font-medium outline-neutral-100 flex items-center gap-2 "
           >
             <ImagePlus className="h-6 w-6" />
-            Upload a image
+            Upload product images
           </Label>
         </div>
       )}

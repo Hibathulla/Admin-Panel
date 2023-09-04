@@ -63,7 +63,7 @@ export const sidebarLinks = [
     id: 8,
     label: "Settings",
     icon: SettingsIcon,
-    slug: "settings",
-    url: "/settings",
+    slug: "settings/64f591c66c13180f873b9074",
+    url: "/settings/64f591c66c13180f873b9074",
   },
 ];

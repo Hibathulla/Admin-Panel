@@ -23,7 +23,7 @@ import { Edit2, ImagePlus, Trash } from "lucide-react";
 import { Label } from "../../ui/label";
 import toast from "react-hot-toast";
 import { useDeleteImage, useUploadImage } from "../../../services/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUpdateLoggedUser } from "../../../services/user";
 import { Icons } from "../../../utils/icons";
 const profileFormSchema = z.object({
@@ -80,6 +80,11 @@ export function ProfileForm({ initialData }: { initialData: userType }) {
   const isLoading = uploadLoader || deleteLoader || updateLoader;
 
   function onSubmit(data: ProfileFormValues) {
+    console.log(data, "formdsta");
+
+    // Object.keys(data).forEach(
+    //   (key) => (data as any)[key] === "" && delete (data as any)[key]
+    // );
     update(data, {
       onSuccess: (res) => {
         console.log(res, "res");
@@ -96,6 +101,17 @@ export function ProfileForm({ initialData }: { initialData: userType }) {
     //   ),
     // })
   }
+
+  // useEffect(() => {
+  //   if (initialData?.photo) {
+  //     setImage(
+  //       `${process.env.NEXT_PUBLIC_API_BASE_URL}/img/users/${initialData?.photo}`
+  //     );
+  //     form.setValue("photo", initialData?.photo!);
+  //   } else {
+  //     setImage("");
+  //   }
+  // }, [form, initialData?.photo]);
 
   const onChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -128,7 +144,6 @@ export function ProfileForm({ initialData }: { initialData: userType }) {
         if (res.status === 204) {
           setImage("");
           form.setValue("photo", "");
-          return;
         }
       },
     });
@@ -148,7 +163,11 @@ export function ProfileForm({ initialData }: { initialData: userType }) {
               <Avatar className="h-32 w-32">
                 {image?.length != 0 ? (
                   <div className="relative rounded-md">
-                    <AvatarImage src={image} alt="Profile picture" />
+                    <AvatarImage
+                      src={image}
+                      alt="Profile picture"
+                      className="aspect-square object-cover"
+                    />
                   </div>
                 ) : (
                   <AvatarFallback className="border-slate-300 bg-gray-200">
@@ -160,7 +179,7 @@ export function ProfileForm({ initialData }: { initialData: userType }) {
               <Input
                 {...field}
                 // value={""}
-                value={image}
+                value={""}
                 placeholder="Product name"
                 id="file-upload"
                 type="file"

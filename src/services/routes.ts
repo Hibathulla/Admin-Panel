@@ -4,6 +4,7 @@ export const routes = {
   updateLoggedUser: "/api/users/updateMe",
   users: "/api/users",
   category: "/api/category",
+  settings: "/api/settings",
   singleUpload: "/api/image/upload",
   multiUpload: "/api/image/multiple-upload",
   deleteUpload: "/api/image/delete",
