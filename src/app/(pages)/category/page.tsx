@@ -7,6 +7,17 @@ import { useRouter } from "next/navigation";
 import CreateButton from "@components/common/CreateButton";
 import { routes } from "@services/routes";
 import CategoryList from "@components/categories/category-list";
+import { Metadata } from "next";
+
+interface Props {
+  params: string;
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Categories`,
+  };
+};
 
 const CategoryPage = () => {
   return (

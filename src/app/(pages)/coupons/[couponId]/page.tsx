@@ -4,6 +4,17 @@ import { useDeleteCoupon, useGetSingleCoupon } from "@services/coupon";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { CouponForm } from "@components/coupon/coupon-form";
+import { Metadata } from "next";
+
+interface Props {
+  params: string;
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Edit coupon`,
+  };
+};
 
 async function getCategory(param: string) {
   let token;

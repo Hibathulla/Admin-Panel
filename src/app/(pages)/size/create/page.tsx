@@ -1,5 +1,16 @@
 import Heading from "@components/common/Heading";
 import { SizeForm } from "@components/sizes/size-form";
+import { Metadata } from "next";
+
+interface Props {
+  params: string;
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Create size`,
+  };
+};
 
 const SizeCreatePage = () => {
   return (

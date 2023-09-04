@@ -37,8 +37,8 @@ const ProductList = () => {
   return (
     <div>
       <DataTable
-        searhPlaceholder="Search Categories..."
-        searchKey="category"
+        searhPlaceholder="Search Products..."
+        searchKey="name"
         columns={ProductColumns}
         data={productData?.product}
       />

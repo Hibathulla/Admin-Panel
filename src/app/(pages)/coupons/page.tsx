@@ -2,6 +2,17 @@ import CreateButton from "@components/common/CreateButton";
 import Heading from "@components/common/Heading";
 import CouponList from "@components/coupon/coupon-list";
 import { Ticket } from "lucide-react";
+import { Metadata } from "next";
+
+interface Props {
+  params: string;
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Coupons`,
+  };
+};
 
 const CouponPage = () => {
   return (

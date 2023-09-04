@@ -57,7 +57,11 @@ export const usePostCoupon = () => {
 
 export const useUpdateCoupon = () => {
   const queryClient = useQueryClient();
-  return useMutation(updateCoupon);
+  return useMutation(updateCoupon, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["coupon"]);
+    },
+  });
 };
 
 export const useDeleteCoupon = () => {

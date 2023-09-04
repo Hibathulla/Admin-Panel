@@ -8,6 +8,17 @@ import CreateButton from "@components/common/CreateButton";
 import { routes } from "@services/routes";
 import CategoryList from "@components/categories/category-list";
 import SizeList from "@components/sizes/size-list";
+import { Metadata } from "next";
+
+interface Props {
+  params: string;
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Sizes`,
+  };
+};
 
 const SizePage = () => {
   return (

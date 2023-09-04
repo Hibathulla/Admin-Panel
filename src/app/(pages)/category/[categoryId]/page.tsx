@@ -8,23 +8,17 @@ import Back from "@components/common/Back";
 import { useDeleteCategory, useGetSingleCategory } from "@services/category";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { Metadata } from "next";
 
-async function getCategory(param: string) {
-  let token;
-  if (typeof window != "undefined") token = localStorage.getItem("token");
-  let res = await fetch(
-    process.env.NEXT_PUBLIC_API_BASE_URL! + "/api/category/" + param,
-    {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    }
-  );
-
-  return res.json();
+interface Props {
+  params: string;
 }
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Edit category`,
+  };
+};
 
 const CategoryUpdatePage = ({ params }: { params: { categoryId: string } }) => {
   const { data: categoryData } = useGetSingleCategory(params?.categoryId);

@@ -57,7 +57,11 @@ export const usePostCategory = () => {
 
 export const useUpdateCategory = () => {
   const queryClient = useQueryClient();
-  return useMutation(updateCategory);
+  return useMutation(updateCategory, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["category"]);
+    },
+  });
 };
 
 export const useDeleteCategory = () => {

@@ -57,7 +57,11 @@ export const usePostSize = () => {
 
 export const useUpdateSize = () => {
   const queryClient = useQueryClient();
-  return useMutation(updateSize);
+  return useMutation(updateSize, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["size"]);
+    },
+  });
 };
 
 export const useDeleteSize = () => {

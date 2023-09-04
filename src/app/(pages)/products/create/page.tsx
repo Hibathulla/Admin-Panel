@@ -1,5 +1,16 @@
 import Heading from "@components/common/Heading";
 import { ProductsForm } from "@components/products/product-form";
+import { Metadata } from "next";
+
+interface Props {
+  params: string;
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Create product`,
+  };
+};
 
 const ProductCreatePage = () => {
   return (

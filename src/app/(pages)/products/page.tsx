@@ -2,6 +2,17 @@ import CreateButton from "@components/common/CreateButton";
 import Heading from "@components/common/Heading";
 import { PackagePlus } from "lucide-react";
 import ProductList from "../../../components/products/product-list";
+import { Metadata } from "next";
+
+interface Props {
+  params: string;
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Products`,
+  };
+};
 
 const ProductsPage = () => {
   return (

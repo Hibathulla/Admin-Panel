@@ -5,6 +5,17 @@ import { useDeleteSize, useGetSingleSize } from "@services/size";
 import { SizeForm } from "@components/sizes/size-form";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { Metadata } from "next";
+
+interface Props {
+  params: string;
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Edit size`,
+  };
+};
 
 const SizeUpdatePage = ({ params }: { params: { sizeId: string } }) => {
   const { data: sizeData } = useGetSingleSize(params?.sizeId);

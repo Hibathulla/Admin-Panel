@@ -4,6 +4,17 @@ import Heading from "@components/common/Heading";
 import { Separator } from "@components/ui/separator";
 import { SettingsForm } from "@components/settings/SettingsForm";
 import { useGetSingleSettings } from "../../../../services/settings";
+import { Metadata } from "next";
+
+interface Props {
+  params: string;
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Settings`,
+  };
+};
 
 const SettingsPage = ({ params }: { params: { settingsId: string } }) => {
   const { data } = useGetSingleSettings(params?.settingsId);

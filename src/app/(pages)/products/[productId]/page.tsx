@@ -8,6 +8,17 @@ import {
   useGetSingleProduct,
 } from "../../../../services/product";
 import { ProductsForm } from "../../../../components/products/product-form";
+import { Metadata } from "next";
+
+interface Props {
+  params: string;
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Edit product`,
+  };
+};
 
 const ProductUpdatePage = ({ params }: { params: { productId: string } }) => {
   const { data: productData } = useGetSingleProduct(params?.productId);

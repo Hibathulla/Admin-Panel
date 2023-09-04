@@ -3,6 +3,17 @@ import React from "react";
 import { ProfileForm } from "@components/profile/profile-form";
 import { useGetLoggedUser } from "@services/user";
 import { Separator } from "@components/ui/separator";
+import { Metadata } from "next";
+
+interface Props {
+  params: string;
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Profile`,
+  };
+};
 
 const ProfilePage = () => {
   const { data } = useGetLoggedUser();

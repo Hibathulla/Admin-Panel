@@ -117,7 +117,7 @@ export function SizeForm({ className, initialData, ...props }: SizeFormProps) {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Category</FormLabel>
+                <FormLabel>Size</FormLabel>
                 <FormControl>
                   <Input placeholder="Size name" type="text" {...field} />
                 </FormControl>
@@ -133,7 +133,7 @@ export function SizeForm({ className, initialData, ...props }: SizeFormProps) {
             name="value"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Billboard Label</FormLabel>
+                <FormLabel>Size value</FormLabel>
                 <FormControl>
                   <Input placeholder="Size value" type="text" {...field} />
                 </FormControl>

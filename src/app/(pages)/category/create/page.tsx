@@ -4,6 +4,17 @@ import { CategoryForm } from "@components/categories/category-form";
 import { Button } from "@components/ui/button";
 import { ChevronLeft } from "lucide-react";
 import Back from "@components/common/Back";
+import { Metadata } from "next";
+
+interface Props {
+  params: string;
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Create category`,
+  };
+};
 
 const CategoryCreatePage = () => {
   return (

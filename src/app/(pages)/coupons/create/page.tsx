@@ -1,5 +1,16 @@
 import Heading from "@components/common/Heading";
 import { CouponForm } from "@components/coupon/coupon-form";
+import { Metadata } from "next";
+
+interface Props {
+  params: string;
+}
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Create coupon`,
+  };
+};
 
 const CouponCreatePage = () => {
   return (

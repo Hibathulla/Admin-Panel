@@ -57,7 +57,11 @@ export const usePostProduct = () => {
 
 export const useUpdateProduct = () => {
   const queryClient = useQueryClient();
-  return useMutation(updateProduct);
+  return useMutation(updateProduct, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["product"]);
+    },
+  });
 };
 
 export const useDeleteProduct = () => {
