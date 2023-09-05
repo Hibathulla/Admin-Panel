@@ -26,6 +26,7 @@ import { useDeleteImage, useUploadImage } from "../../../services/image";
 import { useEffect, useState } from "react";
 import { useUpdateLoggedUser } from "../../../services/user";
 import { Icons } from "../../../utils/icons";
+
 const profileFormSchema = z.object({
   name: z
     .string()
@@ -102,16 +103,16 @@ export function ProfileForm({ initialData }: { initialData: userType }) {
     // })
   }
 
-  // useEffect(() => {
-  //   if (initialData?.photo) {
-  //     setImage(
-  //       `${process.env.NEXT_PUBLIC_API_BASE_URL}/img/users/${initialData?.photo}`
-  //     );
-  //     form.setValue("photo", initialData?.photo!);
-  //   } else {
-  //     setImage("");
-  //   }
-  // }, [form, initialData?.photo]);
+  useEffect(() => {
+    if (initialData?.photo) {
+      setImage(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/img/users/${initialData?.photo}`
+      );
+      form.setValue("photo", initialData?.photo!);
+    } else {
+      setImage("");
+    }
+  }, [form, initialData?.photo]);
 
   const onChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -135,7 +136,7 @@ export function ProfileForm({ initialData }: { initialData: userType }) {
   const onRemove = (e: React.SyntheticEvent) => {
     e.preventDefault();
     const val = {
-      type: "category",
+      type: "users",
       image: form.getValues("photo")!,
     };
     deleteImage(val, {
