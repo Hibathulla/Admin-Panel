@@ -151,7 +151,7 @@ export function CouponForm({
                     defaultValue={field.value}
                   >
                     <SelectTrigger className="w-[220px]">
-                      <SelectValue placeholder="Select a role" />
+                      <SelectValue placeholder="Select a discount type" />
                     </SelectTrigger>
                     <SelectContent>
                       {/* <SelectLabel>Fruits</SelectLabel> */}
