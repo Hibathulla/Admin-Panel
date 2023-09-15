@@ -9,16 +9,11 @@ import { useDeleteCategory, useGetSingleCategory } from "@services/category";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Metadata } from "next";
+import Head from "next/head";
 
 interface Props {
   params: string;
 }
-
-export const generateMetadata = ({ params }: Props): Metadata => {
-  return {
-    title: `Edit category`,
-  };
-};
 
 const CategoryUpdatePage = ({ params }: { params: { categoryId: string } }) => {
   const { data: categoryData } = useGetSingleCategory(params?.categoryId);
@@ -38,20 +33,25 @@ const CategoryUpdatePage = ({ params }: { params: { categoryId: string } }) => {
 
   if (categoryData)
     return (
-      <section className="space-y-6">
-        {/* <Back /> */}
-        <Heading
-          title="Update Category"
-          description="Update a category"
-          deleteButton={true}
-          onConfirm={onDeletehandler}
-          loading={isLoading}
-        />
-        <CategoryForm
-          className="max-w-[15rem]"
-          initialData={categoryData?.data?.category!}
-        />
-      </section>
+      <>
+        <Head>
+          <title>Edit category</title>
+        </Head>
+        <section className="space-y-6">
+          {/* <Back /> */}
+          <Heading
+            title="Update Category"
+            description="Update a category"
+            deleteButton={true}
+            onConfirm={onDeletehandler}
+            loading={isLoading}
+          />
+          <CategoryForm
+            className="max-w-[15rem]"
+            initialData={categoryData?.data?.category!}
+          />
+        </section>
+      </>
     );
 };
 

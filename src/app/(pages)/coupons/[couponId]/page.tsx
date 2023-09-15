@@ -5,16 +5,11 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { CouponForm } from "@components/coupon/coupon-form";
 import { Metadata } from "next";
+import Head from "next/head";
 
 interface Props {
   params: string;
 }
-
-export const generateMetadata = ({ params }: Props): Metadata => {
-  return {
-    title: `Edit coupon`,
-  };
-};
 
 async function getCategory(param: string) {
   let token;
@@ -51,20 +46,25 @@ const CouponUpdatePage = ({ params }: { params: { couponId: string } }) => {
 
   if (categoryData)
     return (
-      <section className="space-y-6">
-        {/* <Back /> */}
-        <Heading
-          title="Update Coupon"
-          description="Update a coupon"
-          deleteButton={true}
-          onConfirm={onDeletehandler}
-          loading={isLoading}
-        />
-        <CouponForm
-          className="max-w-[15rem]"
-          initialData={categoryData?.data?.coupon!}
-        />
-      </section>
+      <>
+        <Head>
+          <title>Edit coupon</title>
+        </Head>
+        <section className="space-y-6">
+          {/* <Back /> */}
+          <Heading
+            title="Update Coupon"
+            description="Update a coupon"
+            deleteButton={true}
+            onConfirm={onDeletehandler}
+            loading={isLoading}
+          />
+          <CouponForm
+            className="max-w-[15rem]"
+            initialData={categoryData?.data?.coupon!}
+          />
+        </section>
+      </>
     );
 };
 

@@ -9,16 +9,11 @@ import {
 } from "../../../../services/product";
 import { ProductsForm } from "../../../../components/products/product-form";
 import { Metadata } from "next";
+import Head from "next/head";
 
 interface Props {
   params: string;
 }
-
-export const generateMetadata = ({ params }: Props): Metadata => {
-  return {
-    title: `Edit product`,
-  };
-};
 
 const ProductUpdatePage = ({ params }: { params: { productId: string } }) => {
   const { data: productData } = useGetSingleProduct(params?.productId);
@@ -38,20 +33,25 @@ const ProductUpdatePage = ({ params }: { params: { productId: string } }) => {
 
   if (productData)
     return (
-      <section className="space-y-6">
-        {/* <Back /> */}
-        <Heading
-          title="Update Product"
-          description="Update a product"
-          deleteButton={true}
-          onConfirm={onDeletehandler}
-          loading={isLoading}
-        />
-        <ProductsForm
-          className="max-w-[45rem]"
-          initialData={productData?.data?.product!}
-        />
-      </section>
+      <>
+        <Head>
+          <title>Edit product</title>
+        </Head>
+        <section className="space-y-6">
+          {/* <Back /> */}
+          <Heading
+            title="Update Product"
+            description="Update a product"
+            deleteButton={true}
+            onConfirm={onDeletehandler}
+            loading={isLoading}
+          />
+          <ProductsForm
+            className="max-w-[45rem]"
+            initialData={productData?.data?.product!}
+          />
+        </section>
+      </>
     );
 };
 
