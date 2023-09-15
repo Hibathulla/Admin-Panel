@@ -6,16 +6,11 @@ import { SizeForm } from "@components/sizes/size-form";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { Metadata } from "next";
+import Head from "next/head";
 
 interface Props {
   params: string;
 }
-
-export const generateMetadata = ({ params }: Props): Metadata => {
-  return {
-    title: `Edit size`,
-  };
-};
 
 const SizeUpdatePage = ({ params }: { params: { sizeId: string } }) => {
   const { data: sizeData } = useGetSingleSize(params?.sizeId);
@@ -34,20 +29,25 @@ const SizeUpdatePage = ({ params }: { params: { sizeId: string } }) => {
 
   if (sizeData)
     return (
-      <section className="space-y-6">
-        {/* <Back /> */}
-        <Heading
-          title="Update Size"
-          description="Update a size"
-          deleteButton={true}
-          onConfirm={onDeletehandler}
-          loading={isLoading}
-        />
-        <SizeForm
-          className="max-w-[15rem]"
-          initialData={sizeData?.data?.size!}
-        />
-      </section>
+      <>
+        <Head>
+          <title>Settings</title>
+        </Head>
+        <section className="space-y-6">
+          {/* <Back /> */}
+          <Heading
+            title="Update Size"
+            description="Update a size"
+            deleteButton={true}
+            onConfirm={onDeletehandler}
+            loading={isLoading}
+          />
+          <SizeForm
+            className="max-w-[15rem]"
+            initialData={sizeData?.data?.size!}
+          />
+        </section>
+      </>
     );
 };
 
