@@ -18,13 +18,18 @@ import { getInitials } from "../../utils/getInitials";
 export function UserNav() {
   const { data } = useGetLoggedUser();
   console.log(data, "user");
+  const image = `${process.env.NEXT_PUBLIC_API_BASE_URL}/img/users/${data?.user?.photo}`;
   const initial = getInitials(data?.user?.name);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-10 w-10">
-            <AvatarImage src={data?.user?.photo} alt="Profile picture" />
+            <AvatarImage
+              src={image}
+              alt="Profile picture"
+              className="object-cover object-center"
+            />
             <AvatarFallback>{initial}</AvatarFallback>
           </Avatar>
         </Button>

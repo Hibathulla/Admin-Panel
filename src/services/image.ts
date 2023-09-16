@@ -9,12 +9,12 @@ interface deleteProps {
   image: string;
 }
 
-const postImageUpload = (val: FormData) => {
-  return axiosInstance.post(routes.singleUpload, val);
+const postImageUpload = async (val: FormData) => {
+  return await axiosInstance.post(routes.singleUpload, val);
 };
 
-const postMultiImageUpload = (val: FormData) => {
-  return axiosInstance.post(routes.multiUpload, val);
+const postMultiImageUpload = async (val: FormData) => {
+  return await axiosInstance.post(routes.multiUpload, val);
 };
 
 const postDelete = (val: deleteProps) => {
