@@ -5,6 +5,8 @@ import { useGetLoggedUser } from "../../../services/user";
 import TableSkeleton from "../../../skeletons/tableSkeleton";
 import { useGetProduct } from "../../../services/product";
 import { ProductColumns } from "./ProductColumn";
+import { useState } from "react";
+import { SortingState } from "@tanstack/react-table";
 
 const data = [
   {
@@ -22,8 +24,8 @@ const data = [
 ];
 
 const ProductList = () => {
+  const [sorting, setSorting] = useState<SortingState>([]);
   const { data: productData, isLoading } = useGetProduct();
-  console.log(productData);
 
   if (isLoading) {
     return (
@@ -41,6 +43,8 @@ const ProductList = () => {
         searchKey="name"
         columns={ProductColumns}
         data={productData?.product}
+        sorting={sorting}
+        setSorting={setSorting}
       />
     </div>
   );

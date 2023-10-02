@@ -17,7 +17,6 @@ interface Props {
 
 const CategoryUpdatePage = ({ params }: { params: { categoryId: string } }) => {
   const { data: categoryData } = useGetSingleCategory(params?.categoryId);
-  console.log(categoryData, "res");
 
   const { mutate, isLoading } = useDeleteCategory();
   const router = useRouter();

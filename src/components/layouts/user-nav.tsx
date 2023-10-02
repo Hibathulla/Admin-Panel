@@ -14,12 +14,20 @@ import {
 import Link from "next/link";
 import { useGetLoggedUser } from "../../services/user";
 import { getInitials } from "../../utils/getInitials";
+import { useRouter } from "next/navigation";
 
 export function UserNav() {
   const { data } = useGetLoggedUser();
-  console.log(data, "user");
+
+  const router = useRouter();
   const image = `${process.env.NEXT_PUBLIC_API_BASE_URL}/img/users/${data?.user?.photo}`;
   const initial = getInitials(data?.user?.name);
+
+  const logoutHandler = () => {
+    localStorage.clear();
+    router.replace("/login");
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -56,7 +64,9 @@ export function UserNav() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="text-red-400">Log out</DropdownMenuItem>
+        <DropdownMenuItem className="text-red-400" onClick={logoutHandler}>
+          Log out
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

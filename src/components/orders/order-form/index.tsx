@@ -55,8 +55,6 @@ const OrderForm: React.FC<OrderUpdateProps> = ({ initialData, onClose }) => {
     error: updateError,
   } = useUpdateOrder();
 
-  console.log(initialData, "data");
-
   const router = useRouter();
   const queryClient = useQueryClient();
 
@@ -66,7 +64,7 @@ const OrderForm: React.FC<OrderUpdateProps> = ({ initialData, onClose }) => {
   const errMessage = err?.message;
 
   function onSubmit(data: UserFormValues) {
-    console.log(data);
+    data;
     update(
       { ...data, id: initialData?._id },
       {

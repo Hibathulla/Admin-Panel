@@ -18,7 +18,6 @@ const getSettings = async () => {
 };
 
 const getSingleSettings = async (id: string) => {
-  console.log(id, "id");
   const { data } = await axiosInstance.get(routes?.settings + `/${id}`);
   return data;
 };

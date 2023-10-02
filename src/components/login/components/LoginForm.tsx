@@ -44,13 +44,11 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
     },
   });
 
-  console.log(isError, error, "login");
-
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     mutate(values);
-    console.log(values);
+    values;
   }
 
   return (

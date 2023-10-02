@@ -7,7 +7,7 @@ import UserTableSkeleton from "../../../skeletons/userTableSkeleton";
 
 const UserList = () => {
   const { data: userData, isLoading } = useGetUser();
-  console.log(userData);
+  userData;
 
   if (isLoading) {
     return (

@@ -67,8 +67,6 @@ export function LocationForm({
     error: updateError,
   } = useUpdateCoupon();
 
-  console.log(initialData, "data");
-
   const router = useRouter();
   const queryClient = useQueryClient();
 
@@ -91,7 +89,6 @@ export function LocationForm({
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     // mutate(values);
-    console.log(values, "val");
     // if (initialData) {
     //   update(
     //     {
@@ -105,7 +102,6 @@ export function LocationForm({
     //     }
     //   );
     // }
-
     //   create(values, {
     //     onSuccess: async (res) => {
     //       await queryClient.invalidateQueries(["coupon"]);

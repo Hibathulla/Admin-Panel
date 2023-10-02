@@ -12,7 +12,7 @@ interface Props {
 
 const OrderItem: React.FC<Props> = ({ data }) => {
   const image = `${process.env.NEXT_PUBLIC_API_BASE_URL}/img/products/${data?.images?.[0]}`;
-  console.log(image, data?.images, "imag");
+
   return (
     <li className="flex py-6 border-b">
       <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-28 sm:w-28">

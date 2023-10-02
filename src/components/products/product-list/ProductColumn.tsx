@@ -5,6 +5,8 @@ import { ProductCellAction } from "./cell-action";
 import { SizeType } from "../../../types/size";
 import moment from "moment";
 import { cn } from "../../../utils/utils";
+import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+import { Button } from "../../ui/button";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -28,7 +30,7 @@ export const ProductColumns: ColumnDef<ProductsColumn>[] = [
   //   cell: ({ cell }) => {
   //     var date: any = cell?.getValue();
   //     const formattedDate = moment(date).format("DD-MM-YY");
-  //     console.log(cell?.getValue(), "date");
+  //     (cell?.getValue(), "date");
 
   //     // var fomatted_date = moment(date).format("YYYY-MM-DD");
   //     return <div className="text-left font-medium">{formattedDate}</div>;
@@ -36,7 +38,17 @@ export const ProductColumns: ColumnDef<ProductsColumn>[] = [
   // },
   {
     accessorKey: "name",
-    header: "Name",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Name
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: ({ cell }) => {
       const name: string = cell?.getValue() as any;
 
@@ -49,7 +61,7 @@ export const ProductColumns: ColumnDef<ProductsColumn>[] = [
     header: "Price",
     cell: ({ cell }) => {
       var price: any = cell?.getValue();
-      console.log(cell, "val");
+
       const discountPrice = cell?.row?.original?.discountPrice;
 
       // var fomatted_date = moment(date).format("YYYY-MM-DD");

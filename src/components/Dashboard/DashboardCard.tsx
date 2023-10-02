@@ -17,7 +17,6 @@ const DashboardCard = ({
 }) => {
   const dashboardIcon = DashboardIcon(icon);
   const { theme } = useTheme();
-  console.log(theme, "theme");
 
   return (
     <Card>

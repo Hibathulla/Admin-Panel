@@ -19,7 +19,6 @@ const getOrder = async () => {
 };
 
 const getSingleOrder = async (id: string) => {
-  console.log(id, "id");
   const { data } = await axiosInstance.get(routes?.order + `/${id}`);
   return data;
 };

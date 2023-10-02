@@ -18,7 +18,6 @@ const getCoupon = async () => {
 };
 
 const getSingleCoupon = async (id: string) => {
-  console.log(id, "id");
   const { data } = await axiosInstance.get(routes?.coupon + `/${id}`);
   return data;
 };

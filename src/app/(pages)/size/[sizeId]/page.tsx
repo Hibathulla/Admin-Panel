@@ -14,7 +14,7 @@ interface Props {
 
 const SizeUpdatePage = ({ params }: { params: { sizeId: string } }) => {
   const { data: sizeData } = useGetSingleSize(params?.sizeId);
-  console.log(sizeData, "res");
+
   const { mutate, isLoading } = useDeleteSize();
   const router = useRouter();
 

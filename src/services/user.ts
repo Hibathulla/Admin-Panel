@@ -19,7 +19,6 @@ const getUser = async () => {
 };
 
 const getSingleUser = async (id: string) => {
-  console.log(id, "id");
   const { data } = await axiosInstance.get(routes?.users + `/${id}`);
   return data;
 };

@@ -6,7 +6,7 @@ import { SizeColumns } from "./SizeColumn";
 
 const SizeList = () => {
   const { data: sizeData, isLoading } = useGetSize();
-  console.log(sizeData);
+  sizeData;
 
   if (isLoading) {
     return (

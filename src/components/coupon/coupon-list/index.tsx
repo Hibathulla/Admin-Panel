@@ -6,7 +6,7 @@ import { CouponColumns } from "./CouponColumn";
 
 const CouponList = () => {
   const { data: couponData, isLoading } = useGetCoupon();
-  console.log(couponData);
+  couponData;
 
   if (isLoading) {
     return (

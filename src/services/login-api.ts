@@ -10,8 +10,6 @@ interface loginType {
 }
 
 const postLogin = (val: loginType) => {
-  console.log(val, "val");
-
   return axiosInstance.post(routes.login, val);
 };
 
@@ -23,7 +21,7 @@ export const useLogin = () => {
         toast.error("Please login as admin");
         return;
       }
-      console.log(res, "res");
+
       const token = res.data.token;
       localStorage.setItem("token", token);
       toast.success(res.data.message);

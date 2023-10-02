@@ -56,8 +56,6 @@ export function SizeForm({ className, initialData, ...props }: SizeFormProps) {
     error: updateError,
   } = useUpdateSize();
 
-  console.log(initialData, "data");
-
   const router = useRouter();
   const queryClient = useQueryClient();
 
@@ -84,7 +82,7 @@ export function SizeForm({ className, initialData, ...props }: SizeFormProps) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     // mutate(values);
-    console.log(values, "val");
+
     if (initialData) {
       update(
         {

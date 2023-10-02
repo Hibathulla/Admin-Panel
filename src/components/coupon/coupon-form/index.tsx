@@ -70,8 +70,6 @@ export function CouponForm({
     error: updateError,
   } = useUpdateCoupon();
 
-  console.log(initialData, "data");
-
   const router = useRouter();
   const queryClient = useQueryClient();
 
@@ -95,7 +93,7 @@ export function CouponForm({
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     // mutate(values);
-    console.log(values, "val");
+
     if (initialData) {
       update(
         {

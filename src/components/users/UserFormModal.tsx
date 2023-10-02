@@ -22,8 +22,6 @@ interface UserModalProps {
 const UserFormModal: React.FC<UserModalProps> = ({ isOpen, onClose, id }) => {
   const { data } = useGetSingleUser(id);
 
-  console.log(data, "test");
-
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>

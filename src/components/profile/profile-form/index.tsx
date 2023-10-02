@@ -81,15 +81,11 @@ export function ProfileForm({ initialData }: { initialData: userType }) {
   const isLoading = uploadLoader || deleteLoader || updateLoader;
 
   function onSubmit(data: ProfileFormValues) {
-    console.log(data, "formdsta");
-
     // Object.keys(data).forEach(
     //   (key) => (data as any)[key] === "" && delete (data as any)[key]
     // );
     update(data, {
       onSuccess: (res) => {
-        console.log(res, "res");
-
         toast.success(res?.message);
       },
     });
@@ -126,7 +122,7 @@ export function ProfileForm({ initialData }: { initialData: userType }) {
     uploadImage(formData, {
       onSuccess: (res) => {
         toast.success(res.data?.message);
-        console.log(res, "res");
+
         setImage(URL.createObjectURL(file!));
         form.setValue("photo", res?.data?.data);
       },
@@ -141,7 +137,6 @@ export function ProfileForm({ initialData }: { initialData: userType }) {
     };
     deleteImage(val, {
       onSuccess: (res) => {
-        console.log(res, "res");
         if (res.status === 204) {
           setImage("");
           form.setValue("photo", "");
@@ -149,7 +144,6 @@ export function ProfileForm({ initialData }: { initialData: userType }) {
       },
     });
   };
-  console.log(image, "image");
 
   return (
     <Form {...form}>

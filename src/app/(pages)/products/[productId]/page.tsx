@@ -17,7 +17,6 @@ interface Props {
 
 const ProductUpdatePage = ({ params }: { params: { productId: string } }) => {
   const { data: productData } = useGetSingleProduct(params?.productId);
-  console.log(productData, "res");
 
   const { mutate, isLoading } = useDeleteProduct();
   const router = useRouter();

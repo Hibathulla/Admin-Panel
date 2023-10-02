@@ -30,7 +30,6 @@ async function getCategory(param: string) {
 
 const CouponUpdatePage = ({ params }: { params: { couponId: string } }) => {
   const { data: categoryData } = useGetSingleCoupon(params?.couponId);
-  console.log(categoryData, "res");
 
   const { mutate, isLoading } = useDeleteCoupon();
   const router = useRouter();

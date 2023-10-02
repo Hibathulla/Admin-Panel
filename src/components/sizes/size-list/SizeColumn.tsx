@@ -30,7 +30,7 @@ export const SizeColumns: ColumnDef<SizeColumn>[] = [
     cell: ({ cell }) => {
       var date: any = cell?.getValue();
       const formattedDate = moment(date).format("DD-MM-YY");
-      console.log(cell?.getValue(), "date");
+      cell?.getValue(), "date";
 
       // var fomatted_date = moment(date).format("YYYY-MM-DD");
       return <div className="text-left font-medium">{formattedDate}</div>;

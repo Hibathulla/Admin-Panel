@@ -18,7 +18,6 @@ const getProduct = async () => {
 };
 
 const getSingleProduct = async (id: string) => {
-  console.log(id, "id");
   const { data } = await axiosInstance.get(routes?.product + `/${id}`);
   return data;
 };

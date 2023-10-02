@@ -28,8 +28,6 @@ const OrderUpdateModal: React.FC<UserModalProps> = ({
 }) => {
   const { data } = useGetSingleOrder(id);
 
-  console.log(data, "test");
-
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>

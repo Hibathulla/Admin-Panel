@@ -70,8 +70,6 @@ export function SettingsForm({
   const { mutate: deleteImage, isLoading: deleteLoader } = useDeleteImage();
   const [image, setImage] = React.useState("");
 
-  console.log(initialData, "data");
-
   //datas
   const err: any = (updateError as any)?.response?.data!;
   const isLoading = updateLoading;
@@ -94,7 +92,7 @@ export function SettingsForm({
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     // mutate(values);
-    console.log(values);
+    values;
   }
 
   React.useEffect(() => {
@@ -120,7 +118,7 @@ export function SettingsForm({
     uploadImage(formData, {
       onSuccess: (res) => {
         toast.success(res.data?.message);
-        console.log(res, "res");
+
         setImage(URL.createObjectURL(file!));
         form.setValue("billboard", res?.data?.data);
         // field.onChange(res?.data?.data);
@@ -136,7 +134,6 @@ export function SettingsForm({
     };
     deleteImage(val, {
       onSuccess: (res) => {
-        console.log(res, "res");
         if (res.status === 204) {
           setImage("");
           form.setValue("billboard", "");

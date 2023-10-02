@@ -73,7 +73,7 @@ export function UserForm({
     error: updateError,
   } = useUpdateUser();
 
-  console.log(initialData, "data");
+  initialData, "data";
 
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -84,7 +84,7 @@ export function UserForm({
   const errMessage = err?.message;
 
   function onSubmit(data: UserFormValues) {
-    console.log(data);
+    data;
     update(
       { ...data, id: initialData?._id },
       {

@@ -4,6 +4,7 @@ import { CategoryColumns } from "./CategoryColumn";
 import { useGetCategory } from "@services/category";
 import { useGetLoggedUser } from "../../../services/user";
 import TableSkeleton from "../../../skeletons/tableSkeleton";
+import { Category, CategoryData } from "../../../types/category";
 
 const data = [
   {
@@ -22,7 +23,7 @@ const data = [
 
 const CategoryList = () => {
   const { data: categoryData, isLoading } = useGetCategory();
-  console.log(categoryData);
+  categoryData;
 
   if (isLoading) {
     return (
@@ -39,7 +40,7 @@ const CategoryList = () => {
         searhPlaceholder="Search Categories..."
         searchKey="category"
         columns={CategoryColumns}
-        data={categoryData?.category}
+        data={categoryData?.category as Category[]}
       />
     </div>
   );

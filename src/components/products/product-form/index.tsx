@@ -93,7 +93,7 @@ export function ProductsForm({
   const { theme } = useTheme();
   //get category
   const { data: categoryList } = useGetCategory();
-  // console.log(data, "data");
+  // (data, "data");
 
   //get suzes
   const { data: sizeList } = useGetSize();
@@ -127,12 +127,17 @@ export function ProductsForm({
 
   const action = initialData ? "Save changes" : "Create";
 
+  //default
+  const currentCategory = categoryList?.category?.find(
+    (el) => el.category === initialData?.category
+  );
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData
       ? {
           ...initialData,
-          category: initialData?.category?.id,
+          category: initialData?.category,
           size: initialData?.size,
         }
       : {
@@ -156,8 +161,6 @@ export function ProductsForm({
       return size?.id;
     });
 
-    console.log(values, "valuyes");
-
     if (initialData) {
       update(
         {
@@ -165,6 +168,7 @@ export function ProductsForm({
           id: initialData?.id,
           size: sizeIds,
           price: values?.price,
+          category: values?.category,
         },
         {
           onSuccess: (res) => {
@@ -191,7 +195,7 @@ export function ProductsForm({
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     // mutate(values);
-    console.log(values);
+    values;
   }
 
   React.useEffect(() => {
@@ -220,8 +224,6 @@ export function ProductsForm({
 
     const formData = new FormData();
 
-    console.log(fileList, "file");
-
     for (let index = 0; index < fileList!.length; index++) {
       const file = fileList?.[index];
       formData.append("image", file!);
@@ -233,7 +235,7 @@ export function ProductsForm({
     uploadImage(formData, {
       onSuccess: (res) => {
         toast.success(res.data?.message);
-        console.log(res, "res");
+
         newFileList.map((file: File) => {
           return selectedFiles.push(URL.createObjectURL(file));
         });
@@ -261,7 +263,6 @@ export function ProductsForm({
     };
     deleteImage(val, {
       onSuccess: (res) => {
-        console.log(res, "res");
         if (res.status === 204) {
           setImages(newPreviewImages);
           form.setValue("images", newValImages);
@@ -270,7 +271,6 @@ export function ProductsForm({
       },
     });
   };
-  console.log(images, "image");
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
@@ -379,6 +379,7 @@ export function ProductsForm({
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={field.value}
+                      value={field.value}
                     >
                       <SelectTrigger
                       // className="w-[220px]"
@@ -391,7 +392,7 @@ export function ProductsForm({
                           return (
                             <SelectItem
                               key={category?.id}
-                              value={category?.id}
+                              value={category?.category.toString()}
                               className="cursor-pointer"
                             >
                               {category?.category}
@@ -416,7 +417,7 @@ export function ProductsForm({
                 control={form.control}
                 name="size"
                 render={({ field }) => {
-                  console.log(field.value, "value");
+                  field.value, "value";
 
                   return (
                     <FormItem className="flex flex-col">

@@ -11,7 +11,7 @@ import {
 const DashboardPage = () => {
   return (
     <section>
-      <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-x-10 gap-y-8">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-4 gap-x-10 gap-y-8">
         <DashboardCard name="Total Revenue" value={10000} icon={CashIcon} />
         <DashboardCard
           name="Total Customers"

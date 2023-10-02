@@ -18,7 +18,6 @@ const getSize = async () => {
 };
 
 const getSingleSize = async (id: string) => {
-  console.log(id, "id");
   const { data } = await axiosInstance.get(routes?.size + `/${id}`);
   return data;
 };

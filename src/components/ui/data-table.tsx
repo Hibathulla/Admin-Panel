@@ -6,6 +6,8 @@ import {
   getCoreRowModel,
   useReactTable,
   getPaginationRowModel,
+  SortingState,
+  getSortedRowModel,
   ColumnFiltersState,
   getFilteredRowModel,
 } from "@tanstack/react-table";
@@ -28,6 +30,8 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
   searchKey: string;
   searhPlaceholder: string;
+  setSorting?: React.Dispatch<React.SetStateAction<SortingState>>;
+  sorting?: SortingState;
 }
 
 export function DataTable<TData, TValue>({
@@ -35,6 +39,8 @@ export function DataTable<TData, TValue>({
   data,
   searchKey,
   searhPlaceholder,
+  setSorting,
+  sorting,
 }: DataTableProps<TData, TValue>) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
@@ -45,8 +51,11 @@ export function DataTable<TData, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
     state: {
       columnFilters,
+      sorting,
     },
   });
 

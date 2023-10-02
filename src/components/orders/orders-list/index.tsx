@@ -24,7 +24,7 @@ const data = [
 
 const OrderList = () => {
   const { data: orderData, isLoading } = useGetOrder();
-  console.log(orderData);
+  orderData;
 
   if (isLoading) {
     return (

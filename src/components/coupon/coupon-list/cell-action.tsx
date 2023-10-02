@@ -19,8 +19,6 @@ import { useDeleteCoupon } from "../../../services/coupon";
 export const CouponCellAction: React.FC<{
   data: any;
 }> = ({ data }) => {
-  console.log(data, "data");
-
   const [open, setOpen] = useState(false);
 
   const router = useRouter();

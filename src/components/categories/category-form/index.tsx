@@ -1,8 +1,8 @@
 "use client";
 
+import { Alert, AlertDescription, AlertTitle } from "@components/ui/alert";
 import { Button } from "@components/ui/button";
 import { Input } from "@components/ui/input";
-import { Alert, AlertDescription, AlertTitle } from "@components/ui/alert";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Icons } from "@utils/icons";
@@ -15,27 +15,19 @@ import * as z from "zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@components/ui/form";
-import { useLogin } from "@services/login-api";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
-import { AxiosError } from "axios";
-import AlertModal from "@components/common/AlertModal";
-import { categoryType } from "../../../types/category";
-import ImageUpload from "../../common/ImageUpload";
-import { ImagePlus, Trash } from "lucide-react";
-import { Label } from "@radix-ui/react-label";
-import Image from "next/image";
-import { usePostCategory, useUpdateCategory } from "../../../services/category";
-import toast from "react-hot-toast";
 import { useQueryClient } from "@tanstack/react-query";
-import { routes } from "../../../services/routes";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { usePostCategory, useUpdateCategory } from "../../../services/category";
 import { useDeleteImage, useUploadImage } from "../../../services/image";
+import ImageUpload from "../../common/ImageUpload";
+import { Category } from "../../../types/category";
 
 const formSchema = z.object({
   category: z.string().min(1, "Please enter a store name"),
@@ -47,7 +39,7 @@ const formSchema = z.object({
 // });
 
 interface CategoryFormProps extends React.HTMLAttributes<HTMLDivElement> {
-  initialData?: categoryType;
+  initialData?: Category;
 }
 
 export function CategoryForm({
@@ -76,8 +68,6 @@ export function CategoryForm({
   const { mutate: uploadImage, isLoading: uploadLoader } = useUploadImage();
   const { mutate: deleteImage, isLoading: deleteLoader } = useDeleteImage();
   const [image, setImage] = React.useState("");
-
-  console.log(initialData, "data");
 
   //datas
   const err: any = ((createError || updateError) as any)?.response?.data!;
@@ -123,7 +113,7 @@ export function CategoryForm({
     uploadImage(formData, {
       onSuccess: (res) => {
         toast.success(res.data?.message);
-        console.log(res, "res");
+
         setImage(URL.createObjectURL(file!));
         form.setValue("billboard", res?.data?.data);
         // field.onChange(res?.data?.data);
@@ -139,7 +129,6 @@ export function CategoryForm({
     };
     deleteImage(val, {
       onSuccess: (res) => {
-        console.log(res, "res");
         if (res.status === 204) {
           setImage("");
           form.setValue("billboard", "");
@@ -153,9 +142,9 @@ export function CategoryForm({
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     // mutate(values);
-    console.log(values, "val");
+
     if (initialData) {
-      console.log(values?.billboard?.length, "billboard");
+      values?.billboard?.length, "billboard";
 
       update(
         {

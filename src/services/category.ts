@@ -6,29 +6,24 @@ import {
 } from "@tanstack/react-query";
 import { routes } from "./routes";
 import { axiosInstance } from "../../axios-config";
-import { categoryType } from "../types/category";
+import { Category, CategoryData } from "../types/category";
 
-interface updateProps extends categoryType {
-  id?: string;
-}
-
-const getCategory = async () => {
+const getCategory = async (): Promise<CategoryData["data"]> => {
   const { data } = await axiosInstance.get(routes?.category);
   return data?.data;
 };
 
 const getSingleCategory = async (id: string) => {
-  console.log(id, "id");
   const { data } = await axiosInstance.get(routes?.category + `/${id}`);
   return data;
 };
 
-const postCategory = async (val: categoryType) => {
+const postCategory = async (val: Category) => {
   const res = await axiosInstance.post(routes?.category, val);
   return res;
 };
 
-const updateCategory = async (val: updateProps) => {
+const updateCategory = async (val: Category) => {
   const id = val?.id;
   delete val?.id;
   return await axiosInstance.patch(routes?.category + `/${id}`, val);

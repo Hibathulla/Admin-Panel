@@ -14,7 +14,6 @@ const Sidebar = () => {
   const pathname = usePathname();
   const { theme } = useTheme();
   const { data } = useGetSingleSettings("64f591c66c13180f873b9074");
-  console.log(hover, "path");
 
   return (
     <aside className="border-r bg-zinc-100 dark:bg-[#181818] h-screen fixed top-0">

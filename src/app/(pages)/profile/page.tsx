@@ -12,7 +12,6 @@ interface Props {
 
 const ProfilePage = () => {
   const { data } = useGetLoggedUser();
-  console.log(data, "user");
   if (data)
     return (
       <>
