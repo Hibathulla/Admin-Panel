@@ -86,7 +86,7 @@ export const ProductColumns: ColumnDef<ProductsColumn>[] = [
       var category: any = cell?.getValue();
 
       // var fomatted_date = moment(date).format("YYYY-MM-DD");
-      return <div className="font-medium">{category?.category}</div>;
+      return <div className="font-medium">{category}</div>;
     },
   },
   {

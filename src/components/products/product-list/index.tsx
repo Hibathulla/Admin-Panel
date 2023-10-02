@@ -8,21 +8,6 @@ import { ProductColumns } from "./ProductColumn";
 import { useState } from "react";
 import { SortingState } from "@tanstack/react-table";
 
-const data = [
-  {
-    id: 1,
-    category: "hello",
-    createdAt: "12/11/12",
-    billboard: "123",
-  },
-  {
-    id: 2,
-    category: "hello",
-    createdAt: "12/11/12",
-    billboard: "123",
-  },
-];
-
 const ProductList = () => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const { data: productData, isLoading } = useGetProduct();
