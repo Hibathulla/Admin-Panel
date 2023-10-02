@@ -1,4 +1,3 @@
-import { categoryType } from "./category";
 import { SizeType } from "./size";
 
 export interface productType {
@@ -9,7 +8,7 @@ export interface productType {
   discountPrice?: number;
   slug: string;
   images: string[];
-  category: categoryType;
+  category: string;
   size: SizeType[];
   isFeatured?: boolean;
   outOfStock?: boolean;
