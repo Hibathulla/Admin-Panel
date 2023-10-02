@@ -7,7 +7,7 @@ import { ChevronLeft } from "lucide-react";
 import Back from "@components/common/Back";
 import { useDeleteCategory, useGetSingleCategory } from "@services/category";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { Metadata } from "next";
 import Head from "next/head";
 
@@ -15,8 +15,11 @@ interface Props {
   params: string;
 }
 
-const CategoryUpdatePage = ({ params }: { params: { categoryId: string } }) => {
-  const { data: categoryData } = useGetSingleCategory(params?.categoryId);
+const CategoryUpdatePage = () => {
+  const params = useParams();
+  const { data: categoryData } = useGetSingleCategory(
+    params?.categoryId as string
+  );
 
   const { mutate, isLoading } = useDeleteCategory();
   const router = useRouter();

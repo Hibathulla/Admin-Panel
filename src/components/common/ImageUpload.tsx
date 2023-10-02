@@ -27,6 +27,7 @@ const ImageUpload: React.FC<{
       </div>
     );
   }
+  console.log(image, "image");
 
   return (
     <Fragment>

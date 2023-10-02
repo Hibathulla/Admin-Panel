@@ -90,8 +90,12 @@ export function CategoryForm({
     },
   });
 
+  console.log(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/img/category/${initialData?.billboard}`
+  );
+
   React.useEffect(() => {
-    if (initialData?.billboard) {
+    if (initialData?.billboard?.length! > 0) {
       setImage(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/img/category/${initialData?.billboard}`
       );
