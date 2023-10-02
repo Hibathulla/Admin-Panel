@@ -43,6 +43,7 @@ import { Textarea } from "../../ui/textarea";
 import toast from "react-hot-toast";
 import ImageUpload from "../../common/ImageUpload";
 import MultiImagesUpload from "../../common/MultiImagesUpload";
+import { Category } from "../../../types/category";
 import {
   useDeleteImage,
   useMultiUploadImage,
@@ -388,11 +389,11 @@ export function ProductsForm({
                       </SelectTrigger>
                       <SelectContent>
                         {/* <SelectLabel>Fruits</SelectLabel> */}
-                        {categoryList?.category?.map((category: any) => {
+                        {categoryList?.category?.map((category: Category) => {
                           return (
                             <SelectItem
                               key={category?.id}
-                              value={category?.category.toString()}
+                              value={category?.slug?.toString()}
                               className="cursor-pointer"
                             >
                               {category?.category}
