@@ -73,8 +73,6 @@ export function UserForm({
     error: updateError,
   } = useUpdateUser();
 
-  initialData, "data";
-
   const router = useRouter();
   const queryClient = useQueryClient();
 
