@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["localhost", "ecommerce-27ee.onrender.com"],
+    domains: ["localhost", "ecommerce-api-depn.onrender.com", "127.0.0.1"],
   },
 };
 
