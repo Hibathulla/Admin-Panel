@@ -12,6 +12,11 @@ interface updateProps extends productType {
   id?: string;
 }
 
+const productStats = async () => {
+  const { data } = await axiosInstance.get(routes?.product + "/stats");
+  return data?.data;
+};
+
 const getProduct = async () => {
   const { data } = await axiosInstance.get(routes?.product);
   return data?.data;
@@ -70,4 +75,8 @@ export const useDeleteProduct = () => {
       queryClient.invalidateQueries(["product"]);
     },
   });
+};
+
+export const useGetProductStats = () => {
+  return useQuery(["product"], productStats);
 };

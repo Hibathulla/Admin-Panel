@@ -13,6 +13,11 @@ interface updateProps {
   status: string;
 }
 
+const orderStats = async () => {
+  const { data } = await axiosInstance.get(routes?.order + "/stats");
+  return data?.data;
+};
+
 const getOrder = async () => {
   const { data } = await axiosInstance.get(routes?.order);
   return data?.data;
@@ -74,4 +79,9 @@ export const useDeleteOrder = () => {
       queryClient.invalidateQueries(["order"]);
     },
   });
+};
+
+export const useGetOrderStats = () => {
+  const queryClient = useQueryClient();
+  return useQuery(["order-stats"], orderStats);
 };

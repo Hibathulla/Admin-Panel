@@ -3,6 +3,11 @@ import { routes } from "./routes";
 import { axiosInstance } from "../../axios-config";
 import { userType } from "../types/user";
 
+const userStats = async () => {
+  const { data } = await axiosInstance.get(routes?.users + "/stats");
+  return data?.data;
+};
+
 const getLoggedUser = async () => {
   const { data } = await axiosInstance.get(routes?.loggedUser);
   return data?.data;
@@ -67,4 +72,9 @@ export const useDeleteUser = () => {
       queryClient.invalidateQueries(["user"]);
     },
   });
+};
+
+export const useGetUserStats = () => {
+  const queryClient = useQueryClient();
+  return useQuery(["user-stats"], userStats);
 };
