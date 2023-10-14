@@ -23,7 +23,6 @@ const data = [
 
 const CategoryList = () => {
   const { data: categoryData, isLoading } = useGetCategory();
-  categoryData;
 
   if (isLoading) {
     return (
@@ -34,16 +33,19 @@ const CategoryList = () => {
     );
   }
 
-  return (
-    <div>
-      <DataTable
-        searhPlaceholder="Search Categories..."
-        searchKey="category"
-        columns={CategoryColumns}
-        data={categoryData?.category as Category[]}
-      />
-    </div>
-  );
+  if (categoryData) {
+    return (
+      <div>
+        <DataTable
+          searhPlaceholder="Search Categories..."
+          searchKey="category"
+          columns={CategoryColumns}
+          data={categoryData?.category as Category[]}
+        />
+      </div>
+    );
+  }
+  return null;
 };
 
 export default CategoryList;

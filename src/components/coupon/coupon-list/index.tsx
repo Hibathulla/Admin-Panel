@@ -29,6 +29,7 @@ const CouponList = () => {
       </div>
     );
   }
+  return null;
 };
 
 export default CouponList;

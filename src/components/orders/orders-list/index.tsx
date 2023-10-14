@@ -35,16 +35,19 @@ const OrderList = () => {
     );
   }
 
-  return (
-    <div>
-      <DataTable
-        searhPlaceholder="Search Orders..."
-        searchKey="name"
-        columns={OrderColumns}
-        data={orderData?.order}
-      />
-    </div>
-  );
+  if (orderData) {
+    return (
+      <div>
+        <DataTable
+          searhPlaceholder="Search Orders..."
+          searchKey="name"
+          columns={OrderColumns}
+          data={orderData?.order}
+        />
+      </div>
+    );
+  }
+  return null;
 };
 
 export default OrderList;

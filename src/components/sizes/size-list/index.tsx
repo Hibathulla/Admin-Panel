@@ -17,16 +17,19 @@ const SizeList = () => {
     );
   }
 
-  return (
-    <div>
-      <DataTable
-        searhPlaceholder="Search sizes..."
-        searchKey="name"
-        columns={SizeColumns}
-        data={sizeData?.size}
-      />
-    </div>
-  );
+  if (sizeData) {
+    return (
+      <div>
+        <DataTable
+          searhPlaceholder="Search sizes..."
+          searchKey="name"
+          columns={SizeColumns}
+          data={sizeData?.size}
+        />
+      </div>
+    );
+  }
+  return null;
 };
 
 export default SizeList;

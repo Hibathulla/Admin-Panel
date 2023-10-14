@@ -17,17 +17,19 @@ const UserList = () => {
       </div>
     );
   }
-
-  return (
-    <div>
-      <DataTable
-        searhPlaceholder="Search users..."
-        searchKey="name"
-        columns={UserColumns}
-        data={userData?.user}
-      />
-    </div>
-  );
+  if (userData) {
+    return (
+      <div>
+        <DataTable
+          searhPlaceholder="Search users..."
+          searchKey="name"
+          columns={UserColumns}
+          data={userData?.user}
+        />
+      </div>
+    );
+  }
+  return null;
 };
 
 export default UserList;
