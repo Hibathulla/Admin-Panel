@@ -5,20 +5,28 @@ import { useState } from "react";
 import { useGetProduct } from "../../../services/product";
 import TableSkeleton from "../../../skeletons/tableSkeleton";
 import { ProductColumns } from "./ProductColumn";
-import { Product, productType } from "../../../types/product";
+import { Product } from "../../../types/product";
 
-const ProductList = () => {
+const ProductList: React.FC<{ productData: Product["data"] }> = ({
+  productData,
+}) => {
   const [sorting, setSorting] = useState<SortingState>([]);
-  const { data: productData, isLoading } = useGetProduct();
+
+  console.log(productData, "dadsa");
+
+  // const { data: productData, isLoading } = useGetProduct();
+
+  // if (isLoading) {
+  //   return (
+  //     <div className="mt-4">
+  //       <TableSkeleton />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div>
-      {isLoading ? (
-        <div className="mt-4">
-          {" "}
-          <TableSkeleton />
-        </div>
-      ) : (
+      {productData ? (
         <DataTable
           searhPlaceholder="Search Products..."
           searchKey="name"
@@ -30,7 +38,7 @@ const ProductList = () => {
           sorting={sorting}
           setSorting={setSorting}
         />
-      )}
+      ) : null}
     </div>
   );
 };
