@@ -166,7 +166,7 @@ export function ProductsForm({
       update(
         {
           ...values,
-          id: initialData?.id,
+          id: initialData?.id as string,
           size: sizeIds,
           price: values?.price,
           category: values?.category,
