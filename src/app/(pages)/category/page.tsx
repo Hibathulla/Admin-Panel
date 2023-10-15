@@ -1,13 +1,9 @@
 "use client";
 
-import { ListPlus, PackagePlus } from "lucide-react";
-import Heading from "@components/common/Heading";
-import { CategoryColumns } from "@components/categories/category-list/CategoryColumn";
-import { useRouter } from "next/navigation";
-import CreateButton from "@components/common/CreateButton";
-import { routes } from "@services/routes";
 import CategoryList from "@components/categories/category-list";
-import { Metadata } from "next";
+import CreateButton from "@components/common/CreateButton";
+import Heading from "@components/common/Heading";
+import { ListPlus } from "lucide-react";
 import Head from "next/head";
 
 const CategoryPage = () => {

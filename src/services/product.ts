@@ -6,7 +6,7 @@ import {
 } from "@tanstack/react-query";
 import { routes } from "./routes";
 import { axiosInstance } from "../../axios-config";
-import { productFormType, productType } from "../types/product";
+import { Product, productFormType, productType } from "../types/product";
 
 interface updateProps extends productType {
   id?: string;
@@ -17,7 +17,7 @@ const productStats = async () => {
   return data?.data;
 };
 
-const getProduct = async () => {
+const getProduct = async (): Promise<Product["data"]> => {
   const { data } = await axiosInstance.get(routes?.product);
   return data?.data;
 };

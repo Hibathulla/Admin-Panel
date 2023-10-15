@@ -7,6 +7,7 @@ import moment from "moment";
 import { cn } from "../../../utils/utils";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import { Button } from "../../ui/button";
+import { Product } from "../../../types/product";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -23,7 +24,7 @@ export type ProductsColumn = {
   //   email: string;
 };
 
-export const ProductColumns: ColumnDef<ProductsColumn>[] = [
+export const ProductColumns: ColumnDef<Product["data"]["product"][0]>[] = [
   // {
   //   accessorKey: "createdAt",
   //   header: "Date",
