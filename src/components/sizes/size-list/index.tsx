@@ -6,7 +6,6 @@ import { SizeColumns } from "./SizeColumn";
 
 const SizeList = () => {
   const { data: sizeData, isLoading } = useGetSize();
-  sizeData;
 
   if (isLoading) {
     return (
@@ -17,19 +16,16 @@ const SizeList = () => {
     );
   }
 
-  if (sizeData) {
-    return (
-      <div>
-        <DataTable
-          searhPlaceholder="Search sizes..."
-          searchKey="name"
-          columns={SizeColumns}
-          data={sizeData?.size}
-        />
-      </div>
-    );
-  }
-  return null;
+  return (
+    <div>
+      <DataTable
+        searhPlaceholder="Search sizes..."
+        searchKey="name"
+        columns={SizeColumns}
+        data={sizeData?.size}
+      />
+    </div>
+  );
 };
 
 export default SizeList;

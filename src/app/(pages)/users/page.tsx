@@ -1,7 +1,6 @@
-import CreateButton from "@components/common/CreateButton";
+"use client";
 import Heading from "@components/common/Heading";
 import UserList from "@components/users/user-list";
-import { Ruler } from "lucide-react";
 import { Metadata } from "next";
 
 interface Props {

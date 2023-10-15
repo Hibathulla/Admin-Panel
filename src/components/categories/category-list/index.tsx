@@ -6,21 +6,6 @@ import { useGetLoggedUser } from "../../../services/user";
 import TableSkeleton from "../../../skeletons/tableSkeleton";
 import { Category, CategoryData } from "../../../types/category";
 
-const data = [
-  {
-    id: 1,
-    category: "hello",
-    createdAt: "12/11/12",
-    billboard: "123",
-  },
-  {
-    id: 2,
-    category: "hello",
-    createdAt: "12/11/12",
-    billboard: "123",
-  },
-];
-
 const CategoryList = () => {
   const { data: categoryData, isLoading } = useGetCategory();
 
@@ -33,19 +18,16 @@ const CategoryList = () => {
     );
   }
 
-  if (categoryData) {
-    return (
-      <div>
-        <DataTable
-          searhPlaceholder="Search Categories..."
-          searchKey="category"
-          columns={CategoryColumns}
-          data={categoryData?.category as Category[]}
-        />
-      </div>
-    );
-  }
-  return null;
+  return (
+    <div>
+      <DataTable
+        searhPlaceholder="Search Categories..."
+        searchKey="category"
+        columns={CategoryColumns}
+        data={categoryData?.category as Category[]}
+      />
+    </div>
+  );
 };
 
 export default CategoryList;

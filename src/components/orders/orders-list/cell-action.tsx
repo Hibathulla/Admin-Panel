@@ -44,7 +44,7 @@ export const OrderCellAction: React.FC<{
         loading={isLoading}
       />
       <OrderUpdateModal
-        id={data?._id}
+        data={data}
         isOpen={openUpdate}
         onClose={() => setOpenUpdate(false)}
       />

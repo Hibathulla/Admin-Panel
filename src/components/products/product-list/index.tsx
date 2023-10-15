@@ -21,21 +21,18 @@ const ProductList = () => {
     );
   }
 
-  if (productData) {
-    return (
-      <div>
-        <DataTable
-          searhPlaceholder="Search Products..."
-          searchKey="name"
-          columns={ProductColumns}
-          data={productData?.product}
-          sorting={sorting}
-          setSorting={setSorting}
-        />
-      </div>
-    );
-  }
-  return null;
+  return (
+    <div>
+      <DataTable
+        searhPlaceholder="Search Products..."
+        searchKey="name"
+        columns={ProductColumns}
+        data={productData?.product}
+        sorting={sorting}
+        setSorting={setSorting}
+      />
+    </div>
+  );
 };
 
 export default ProductList;

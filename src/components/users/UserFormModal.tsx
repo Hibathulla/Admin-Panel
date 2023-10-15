@@ -12,16 +12,15 @@ import { Button } from "../ui/button";
 import { Icons } from "../../utils/icons";
 import { UserForm } from "./user-form";
 import { useGetSingleUser } from "../../services/user";
+import { userType } from "../../types/user";
 
 interface UserModalProps {
   isOpen: boolean;
   onClose: () => void;
-  id: string;
+  data: userType;
 }
 
-const UserFormModal: React.FC<UserModalProps> = ({ isOpen, onClose, id }) => {
-  const { data } = useGetSingleUser(id);
-
+const UserFormModal: React.FC<UserModalProps> = ({ isOpen, onClose, data }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>
@@ -32,7 +31,7 @@ const UserFormModal: React.FC<UserModalProps> = ({ isOpen, onClose, id }) => {
             {text ? text : "data"}.
           </DialogDescription> */}
         </DialogHeader>
-        <UserForm initialData={data?.data?.user} onClose={onClose} />
+        <UserForm initialData={data} onClose={onClose} />
         {/* <DialogFooter>
           <Button disabled={loading} variant="destructive" onClick={onConfirm}>
             {loading ? (

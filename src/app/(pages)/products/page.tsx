@@ -1,3 +1,4 @@
+"use client";
 import CreateButton from "@components/common/CreateButton";
 import Heading from "@components/common/Heading";
 import { PackagePlus } from "lucide-react";

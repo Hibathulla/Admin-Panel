@@ -1,3 +1,4 @@
+"use client";
 import Heading from "@components/common/Heading";
 import ProductList from "../../../components/products/product-list";
 import { Metadata } from "next";

@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 
 import { ListPlus, PackagePlus } from "lucide-react";
 import Heading from "@components/common/Heading";

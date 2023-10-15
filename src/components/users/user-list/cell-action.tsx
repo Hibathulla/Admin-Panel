@@ -34,11 +34,7 @@ export const UserCellAction: React.FC<{
 
   return (
     <Fragment>
-      <UserFormModal
-        isOpen={open}
-        onClose={() => setOpen(false)}
-        id={data?._id}
-      />
+      <UserFormModal isOpen={open} onClose={() => setOpen(false)} data={data} />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="h-8 w-8 p-0">

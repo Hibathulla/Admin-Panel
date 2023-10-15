@@ -6,7 +6,6 @@ import { CouponColumns } from "./CouponColumn";
 
 const CouponList = () => {
   const { data: couponData, isLoading } = useGetCoupon();
-  couponData;
 
   if (isLoading) {
     return (
@@ -17,19 +16,16 @@ const CouponList = () => {
     );
   }
 
-  if (couponData?.coupon.length != 0) {
-    return (
-      <div>
-        <DataTable
-          searhPlaceholder="Search coupons..."
-          searchKey="name"
-          columns={CouponColumns}
-          data={couponData?.coupon}
-        />
-      </div>
-    );
-  }
-  return null;
+  return (
+    <div>
+      <DataTable
+        searhPlaceholder="Search coupons..."
+        searchKey="name"
+        columns={CouponColumns}
+        data={couponData?.coupon}
+      />
+    </div>
+  );
 };
 
 export default CouponList;

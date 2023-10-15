@@ -14,19 +14,20 @@ import OrderForm from "./order-form";
 import { useGetSingleUser } from "../../services/user";
 import { useGetSingleOrder } from "../../services/order";
 import OrderItem from "./order-item";
+import { orderType } from "../../types/order";
 
 interface UserModalProps {
   isOpen: boolean;
   onClose: () => void;
-  id: string;
+  data: orderType;
 }
 
 const OrderUpdateModal: React.FC<UserModalProps> = ({
   isOpen,
   onClose,
-  id,
+  data,
 }) => {
-  const { data } = useGetSingleOrder(id);
+  console.log(data, "da");
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -39,11 +40,11 @@ const OrderUpdateModal: React.FC<UserModalProps> = ({
           </DialogDescription> */}
         </DialogHeader>
         <div className="w-full h-[10rem] overflow-y-auto divide divide-y">
-          {data?.data?.order?.products?.map((product: any) => {
+          {data?.products?.map((product: any) => {
             return <OrderItem key={product?.id} data={product} />;
           })}
         </div>
-        <OrderForm initialData={data?.data?.order} onClose={onClose} />
+        <OrderForm initialData={data} onClose={onClose} />
         {/* <DialogFooter>
           <Button disabled={loading} variant="destructive" onClick={onConfirm}>
             {loading ? (

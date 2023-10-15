@@ -7,29 +7,25 @@ import UserTableSkeleton from "../../../skeletons/userTableSkeleton";
 
 const UserList = () => {
   const { data: userData, isLoading } = useGetUser();
-  userData;
 
   if (isLoading) {
     return (
       <div className="mt-4">
-        {" "}
         <UserTableSkeleton />
       </div>
     );
   }
-  if (userData) {
-    return (
-      <div>
-        <DataTable
-          searhPlaceholder="Search users..."
-          searchKey="name"
-          columns={UserColumns}
-          data={userData?.user}
-        />
-      </div>
-    );
-  }
-  return null;
+
+  return (
+    <div>
+      <DataTable
+        searhPlaceholder="Search users..."
+        searchKey="name"
+        columns={UserColumns}
+        data={userData?.user}
+      />
+    </div>
+  );
 };
 
 export default UserList;
