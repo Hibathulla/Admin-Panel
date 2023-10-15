@@ -94,7 +94,7 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
               <AlertDescription>{errMessage}</AlertDescription>
             </Alert>
           )}
-          <Button type="submit" className="w-full">
+          <Button disabled={isLoading} type="submit" className="w-full">
             {isLoading ? (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             ) : (
