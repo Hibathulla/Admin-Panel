@@ -1,15 +1,8 @@
 "use client";
-import React from "react";
 import Heading from "@components/common/Heading";
-import { Separator } from "@components/ui/separator";
 import { SettingsForm } from "@components/settings/SettingsForm";
-import { useGetSingleSettings } from "../../../../services/settings";
-import { Metadata } from "next";
 import Head from "next/head";
-
-interface Props {
-  params: string;
-}
+import { useGetSingleSettings } from "../../../../services/settings";
 
 const SettingsPage = ({ params }: { params: { settingsId: string } }) => {
   const { data } = useGetSingleSettings(params?.settingsId);

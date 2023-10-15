@@ -7,27 +7,6 @@ import { CouponForm } from "@components/coupon/coupon-form";
 import { Metadata } from "next";
 import Head from "next/head";
 
-interface Props {
-  params: string;
-}
-
-async function getCategory(param: string) {
-  let token;
-  if (typeof window != "undefined") token = localStorage.getItem("token");
-  let res = await fetch(
-    process.env.NEXT_PUBLIC_API_BASE_URL! + "/api/category/" + param,
-    {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    }
-  );
-
-  return res.json();
-}
-
 const CouponUpdatePage = ({ params }: { params: { couponId: string } }) => {
   const { data: categoryData } = useGetSingleCoupon(params?.couponId);
 

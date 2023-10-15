@@ -9,20 +9,14 @@ import { routes } from "@services/routes";
 import CategoryList from "@components/categories/category-list";
 import SizeList from "@components/sizes/size-list";
 import { Metadata } from "next";
-
-interface Props {
-  params: string;
-}
-
-export const generateMetadata = ({ params }: Props): Metadata => {
-  return {
-    title: `Sizes`,
-  };
-};
+import Head from "next/head";
 
 const SizePage = () => {
   return (
     <section>
+      <Head>
+        <title>Size</title>
+      </Head>
       <div className="flex w-full items-center justify-between">
         <Heading title="Sizes" description="Manage store sizes" />
         <CreateButton

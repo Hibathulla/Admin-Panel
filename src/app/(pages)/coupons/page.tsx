@@ -4,20 +4,14 @@ import Heading from "@components/common/Heading";
 import CouponList from "@components/coupon/coupon-list";
 import { Ticket } from "lucide-react";
 import { Metadata } from "next";
-
-interface Props {
-  params: string;
-}
-
-export const generateMetadata = ({ params }: Props): Metadata => {
-  return {
-    title: `Coupons`,
-  };
-};
+import Head from "next/head";
 
 const CouponPage = () => {
   return (
     <section>
+      <Head>
+        <title>Coupons</title>
+      </Head>
       <div className="flex w-full items-center justify-between">
         <Heading title="Coupons" description="Manage store coupons" />
         <CreateButton
@@ -26,6 +20,7 @@ const CouponPage = () => {
           icon={<Ticket className="w-5 h-5 mr-2" />}
         />
       </div>
+      {/* coupon list */}
       <CouponList />
     </section>
   );

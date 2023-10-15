@@ -2,20 +2,14 @@
 import Heading from "@components/common/Heading";
 import UserList from "@components/users/user-list";
 import { Metadata } from "next";
-
-interface Props {
-  params: string;
-}
-
-export const generateMetadata = ({ params }: Props): Metadata => {
-  return {
-    title: `Users`,
-  };
-};
+import Head from "next/head";
 
 const UsersPage = () => {
   return (
     <section>
+      <Head>
+        <title>Users</title>
+      </Head>
       <div className="flex w-full items-center justify-between">
         <Heading title="Users" description="Manage store users" />
       </div>

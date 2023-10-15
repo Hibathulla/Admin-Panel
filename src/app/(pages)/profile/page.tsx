@@ -1,9 +1,7 @@
 "use client";
-import React from "react";
 import { ProfileForm } from "@components/profile/profile-form";
-import { useGetLoggedUser } from "@services/user";
 import { Separator } from "@components/ui/separator";
-import { Metadata } from "next";
+import { useGetLoggedUser } from "@services/user";
 import Head from "next/head";
 
 interface Props {

@@ -8,20 +8,14 @@ import CreateButton from "@components/common/CreateButton";
 import { routes } from "@services/routes";
 import CategoryList from "@components/categories/category-list";
 import { Metadata } from "next";
-
-interface Props {
-  params: string;
-}
-
-export const generateMetadata = ({ params }: Props): Metadata => {
-  return {
-    title: `Categories`,
-  };
-};
+import Head from "next/head";
 
 const CategoryPage = () => {
   return (
     <section>
+      <Head>
+        <title>Categories</title>
+      </Head>
       <div className="flex w-full items-center justify-between">
         <Heading title="Categories" description="Manage store category" />
         <CreateButton
