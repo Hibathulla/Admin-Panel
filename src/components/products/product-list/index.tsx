@@ -12,25 +12,23 @@ const ProductList = () => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const { data: productData, isLoading } = useGetProduct();
 
-  if (isLoading) {
-    return (
-      <div className="mt-4">
-        {" "}
-        <TableSkeleton />
-      </div>
-    );
-  }
-
   return (
     <div>
-      <DataTable
-        searhPlaceholder="Search Products..."
-        searchKey="name"
-        columns={ProductColumns}
-        data={productData?.product}
-        sorting={sorting}
-        setSorting={setSorting}
-      />
+      {isLoading ? (
+        <div className="mt-4">
+          {" "}
+          <TableSkeleton />
+        </div>
+      ) : (
+        <DataTable
+          searhPlaceholder="Search Products..."
+          searchKey="name"
+          columns={ProductColumns}
+          data={productData?.product}
+          sorting={sorting}
+          setSorting={setSorting}
+        />
+      )}
     </div>
   );
 };
