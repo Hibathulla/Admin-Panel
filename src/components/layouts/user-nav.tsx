@@ -60,7 +60,7 @@ export function UserNav() {
           </DropdownMenuItem>
 
           <DropdownMenuItem>
-            <Link href={"/settings"}>Settings</Link>
+            <Link href={"/settings/64f591c66c13180f873b9074"}>Settings</Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

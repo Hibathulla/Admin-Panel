@@ -63,7 +63,7 @@ export const useUpdateProduct = () => {
   const queryClient = useQueryClient();
   return useMutation(updateProduct, {
     onSuccess: () => {
-      queryClient.invalidateQueries(["product"]);
+      return queryClient.invalidateQueries(["product"]);
     },
   });
 };
@@ -72,7 +72,7 @@ export const useDeleteProduct = () => {
   const queryClient = useQueryClient();
   return useMutation(deleteProduct, {
     onSuccess: () => {
-      queryClient.invalidateQueries(["product"]);
+      return queryClient.invalidateQueries(["product"]);
     },
   });
 };
