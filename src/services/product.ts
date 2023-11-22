@@ -54,7 +54,7 @@ export const usePostProduct = () => {
   const queryClient = useQueryClient();
   return useMutation(postProduct, {
     onSuccess: () => {
-      return queryClient.invalidateQueries({ queryKey: ["product"] });
+      return queryClient.invalidateQueries(["product"]);
     },
   });
 };
@@ -63,7 +63,7 @@ export const useUpdateProduct = () => {
   const queryClient = useQueryClient();
   return useMutation(updateProduct, {
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["product"] });
+      queryClient.invalidateQueries(["product"]);
     },
   });
 };
