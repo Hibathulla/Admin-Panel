@@ -15,6 +15,7 @@ import { Fragment, useState } from "react";
 import toast from "react-hot-toast";
 import { useDeleteProduct } from "../../../services/product";
 import OrderUpdateModal from "../OrderUpdateModel";
+import { useDeleteOrder } from "../../../services/order";
 
 export const OrderCellAction: React.FC<{
   data: any;
@@ -24,13 +25,13 @@ export const OrderCellAction: React.FC<{
 
   const router = useRouter();
 
-  const { mutate, isLoading } = useDeleteProduct();
+  const { mutate, isLoading } = useDeleteOrder();
 
   const onDelete = () => {
     mutate(data?.id, {
       onSuccess: (res) => {
         setOpen(false);
-        toast.error("Product deleted successfully");
+        toast.error("Order deleted successfully");
       },
     });
   };
